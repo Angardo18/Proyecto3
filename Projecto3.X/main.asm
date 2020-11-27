@@ -26,13 +26,19 @@
  ;------------------------------------------------------------------------------------------------------------------------------------
  ;------------------------------- CONTROL DE EJECUCION -------------------------------------------------------------------
  OPCION RES 1 ;BIT 0: INDICA SI ESTA EN MODO MANUAL (0) O MODO CONTROL POR COMPUTADORA (1)
- ANTIREBOTE RES 1 ;CONTROL DEL ANTIREBOTE
  DELAYMS RES 1
+ PORTA_ANTERIOR RES 1
+ PORTA_ACTUAL RES 1
  ;-------------------------------------------------------------------------------------------------------------------------------------
  ;---------------------------------------- GUARDADO DEL AMBIENTE EN INTERRUPCION ------------------------------
  W_RAM RES 1
  STATUS_RAM RES 1
  FSR_RAM RES 1
+ ;---------------------------- VARIABLES DE PWM --------------------------------------------------------------------------
+ PWM0 RES 1
+ PWM1 RES 1
+ PWM2 RES 1
+PWM3 RES 1
  ;------------------------------------------------------------------------------------------------------------------------------------
  ;-------------------------- CONTROL DE PWM GENERADO POR SOFTWARE --------------------------------------------
  CONTADOR_PWM RES 1 ;CUENTA 
@@ -45,6 +51,7 @@
  ;----------------- COMUNICACION  SERIAL ---------------------------------------------------------------------------------
  CONTADOR_TX RES 1 ;ESTE CONTADOR LLEVA EL REGISTRO DE QUE DATO SE TIENE QUE ENVIAR
  CONTADOR_RC RES 1 ;CONTADOR USADO PARA LLEVAR EL REGISTRO DE LOS DATOS RECIBIDOS
+ 
  SERVO0_CENTENAS_RX  RES 1
  SERVO0_DECENAS_RX  RES 1
  SERVO0_UNIDADES_RX  RES 1
@@ -86,8 +93,11 @@
  VALOR_DECENAS  RES 1
  VALOR_UNIDADES RES  1
  ;------------------------------------------------------------------------------------------------------------------------------
- ;----------- VALORES EN BCD DEL ADC DE LOS SERVOMOTORES --------------
-
+ ;----------- VALORES BIN DE LA RECEPCION ------------------------------------------------------------------------
+ BIN_SERVO0 RES 1
+ BIN_SERVO1 RES 1
+ BIN_SERVO2 RES 1
+ BIN_SERVO3 RES 1
  ;
  
  
@@ -112,8 +122,8 @@ INT_TMR0:
     MOVF    SECUENCIA,W
     ADDWF   PCL, F
     GOTO    INICIO_PERIODO ;este contador LLEVA EN CONTROL DE LA SECUENCIA PARA LA GENERACION PWM
-    GOTO    PWM1
-    GOTO    PWM2
+    GOTO    VAL_PWM1
+    GOTO    VAL_PWM2
     
     CLRF    SECUENCIA
     INICIO_PERIODO ;EN LA PRIMERA FASE SE COLOCA EN 1 EL PIN RC0 Y RC3 SE ENCUENTRA EN 0
@@ -124,7 +134,7 @@ INT_TMR0:
     INCF    SECUENCIA,F ;A LA SIGUIENTE ENTRADA SE EJECUTA PWM1
     GOTO INT_RX
     
-    PWM1
+    VAL_PWM1
     BCF	PORTC,RC0 ;AL PASAR EL TIEMPO ESTABLECIDO POR LA VARIABLE TRABAJO 1
     BSF	PORTC, RC3
     MOVF   TRABAJO2,W
@@ -133,7 +143,7 @@ INT_TMR0:
     INCF SECUENCIA,F
     GOTO INT_RX
     
-    PWM2
+    VAL_PWM2
     BCF	PORTC,RC0
     BCF	PORTC,RC3
     CLRF	TMR0 ;LA SIGUIENTE INTERRUPCION OCURRIRA DENTRO DE 4.09mS
@@ -383,7 +393,7 @@ SEND_DATA:
     MOVWF   TXREG
     INCF    CONTADOR_TX,F
     RETURN
-    
+
 MAIN_PROG CODE                      ; let linker place main program
  
  START
@@ -406,7 +416,7 @@ MAIN_PROG CODE                      ; let linker place main program
     MOVLW   .255
     MOVWF   TRISA
     CLRF	   TRISC
-    CLRF	   TRISD
+    CLRF	   TRISB
     
     
     
@@ -463,60 +473,153 @@ MAIN_PROG CODE                      ; let linker place main program
     CLRF    CONTADOR_TX
     CLRF    CONTADOR_RC
     CLRF    SERVO_GUARDAR
+    MOVLW   .1
+    MOVWF   OPCION
+    MOVWF SERVO0_CENTENAS_RX  
+    MOVWF SERVO0_DECENAS_RX 
+    MOVWF   SERVO0_UNIDADES_RX 
+    MOVWF SERVO1_CENTENAS_RX  
+    MOVWF SERVO1_DECENAS_RX 
+    MOVWF   SERVO1_UNIDADES_RX 
+    MOVWF SERVO2_CENTENAS_RX  
+    MOVWF SERVO2_DECENAS_RX 
+    MOVWF   SERVO2_UNIDADES_RX 
+    MOVWF SERVO3_CENTENAS_RX  
+    MOVWF SERVO3_DECENAS_RX 
+    MOVWF   SERVO3_UNIDADES_RX 
+    
     BSF	ADCON0, GO ;INICIA LA CONVERSION
     
 LOOP:
-    MOVF    PORTA,W
-    MOVWF   ANTIREBOTE
+    MOVF    PORTA_ACTUAL,W
+    MOVWF   PORTA_ANTERIOR
     CALL    DELAY
-    
+    MOVF    PORTA, W
+    MOVWF   PORTA_ACTUAL
     ;SE COMPRUEBA DE QUE SE HAYA SOLTADO EL BOTON
+    BTFSS   PORTA_ANTERIOR, RA4
+    GOTO    SA    
+   ; ------------- SI SE 1 SE EJECUTA ESTO------------------
+    BTFSC   PORTA_ACTUAL,RA4
+    GOTO    SA
+    ;---------- SI SE ANTERIOR ES 0 ----------------------------
+    BCF	STATUS,C 
+    RLF	OPCION, F
     
-    ;SE ENTRA EN ESTA SECCION DEL CODIGO SI FLAGS EN EL BIT 0 ESTA EN 0, INDICANDO QUE ESTA EN
-    ;MODO MANUAL. 
-    MOVLW   ADC0
+    MOVLW   .4
+    SUBWF   OPCION,W
+    BTFSS	STATUS,Z
+    GOTO SA
+    ;---------------------------------------------------------------
+    MOVLW .1
+    MOVWF   OPCION
+    
+    SA
+    BCF	PIE1, ADIE
+    BTFSC   OPCION, 0
+    GOTO    ANALOGICO
+    BTFSC   OPCION,1
+    GOTO    COMPUTADORA
+    GOTO    LOOP
+    
+    ANALOGICO
+    CLRF    PORTB
+    BSF	PORTB,7
+    
+    MOVF    ADC0,W
+    MOVWF   PWM0
+    MOVF    ADC1,W
+    MOVWF   PWM1
+    MOVF    ADC2,W
+    MOVWF   PWM2
+    MOVF    ADC3,W
+    MOVWF PWM3
+    GOTO    CONVERSION
+    
+    COMPUTADORA 
+    CLRF    PORTB
+    BSF	PORTB,6
+    
+     ;--------------------- SE CONVIERTE EL BCD A BIN ---------------------------------------------------------------
+    MOVLW SERVO0_CENTENAS_RX
+    MOVWF   FSR
+    CALL CONVERTIR_BCD_TO_BIN
+    MOVF    VALOR_BIN,W
+    MOVWF   BIN_SERVO0
+    
+    MOVLW SERVO1_CENTENAS_RX
+    MOVWF   FSR
+    CALL CONVERTIR_BCD_TO_BIN
+    MOVF    VALOR_BIN,W
+    MOVWF   BIN_SERVO1
+    
+    MOVLW SERVO2_CENTENAS_RX
+    MOVWF   FSR
+    CALL CONVERTIR_BCD_TO_BIN
+    MOVF    VALOR_BIN,W
+    MOVWF   BIN_SERVO2
+    
+    MOVLW SERVO3_CENTENAS_RX
+    MOVWF   FSR
+    CALL CONVERTIR_BCD_TO_BIN
+    MOVF    VALOR_BIN,W
+    MOVWF   BIN_SERVO3
+    
+    MOVF    BIN_SERVO0,W
+    MOVWF   PWM0
+    MOVF    BIN_SERVO1,W
+    MOVWF   PWM1
+    MOVF    BIN_SERVO2,W
+    MOVWF   PWM2
+    MOVF    BIN_SERVO3,W
+    MOVWF PWM3
+   
+    CONVERSION
+    BSF	PIE1, ADIE
+    MOVLW   PWM2
     MOVWF   FSR ;VALOR DEL ADC PARA EL VALO
      CALL    VALOR_PWM
     MOVF    AJUSTE_PWM,W
     MOVWF   CCPR1L
     
-    MOVLW    ADC1
+    MOVLW    PWM1
     MOVWF   FSR
     CALL    VALOR_PWM
     MOVF    AJUSTE_PWM
     MOVWF   CCPR2L
     
-    MOVLW   ADC2
+    MOVLW  PWM0
     MOVWF   FSR
     CALL   VALOR_PWM
     MOVF    AJUSTE_PWM,W
     MOVWF TRABAJO1
     	
-    MOVLW   ADC3
+    MOVLW   PWM3
     MOVWF   FSR
     CALL   VALOR_PWM
     MOVF    AJUSTE_PWM,W
     MOVWF TRABAJO2
+    
     ;--------------------- AQUI SE CONVIERTE EL VALOR DEL SERVO EN BCD ------------------------------------
-    MOVF    ADC0,W
+    MOVF    PWM0,W
     MOVWF   VALOR_BIN
     MOVLW   VALOR_CENTENAS_SERVO0
     MOVWF   FSR
    CALL CONVERTIR_BIN_TO_BCD ;EN ESTA RUTINA SE GUARDAN LOS VALORES 
    
-    MOVF    ADC1,W
+    MOVF    PWM1,W
     MOVWF   VALOR_BIN
     MOVLW   VALOR_CENTENAS_SERVO1
     MOVWF   FSR
    CALL CONVERTIR_BIN_TO_BCD ;EN ESTA RUTINA SE GUARDAN LOS VALORES 
    
-    MOVF    ADC2,W
+    MOVF    PWM2,W
     MOVWF   VALOR_BIN
     MOVLW   VALOR_CENTENAS_SERVO2
     MOVWF   FSR
    CALL CONVERTIR_BIN_TO_BCD ;EN ESTA RUTINA SE GUARDAN LOS VALORES 
    
-    MOVF    ADC3,W
+    MOVF    PWM3,W
     MOVWF   VALOR_BIN
     MOVLW   VALOR_CENTENAS_SERVO3
     MOVWF   FSR
@@ -563,8 +666,9 @@ CONVERTIR_BCD_TO_BIN:
     DECFSZ  VALOR_UNIDADES,F
     GOTO	SUMAR_UNIDADES
     RETURN
+   
     SUMAR_UNIDADES
-    ADDWF VALOR_BIN, W
+    ADDWF VALOR_BIN, F
     GOTO UNIDADES_CONVERTIR
     
     
@@ -633,9 +737,9 @@ VALOR_PWM:
    RETURN
     
 DELAY:
-    MOVLW   .100
+    MOVLW   .200
     MOVWF   DELAYMS
-    DECFSZ   DELAYMS
+    DECFSZ   DELAYMS,F
     GOTO    $-1
     RETURN
     END

@@ -1,16 +1,16 @@
 MPLINK 5.09, LINKER
-Linker Map File - Created Fri Nov 27 01:57:41 2020
+Linker Map File - Created Fri Nov 27 05:24:20 2020
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
                 ---------  ---------  ---------  ---------  ---------
                  RES_VECT       code   0x000000    program   0x000002
                    .cinit    romdata   0x000001    program   0x000004
-                 INT_VECT       code   0x000004    program   0x0001a4
-                MAIN_PROG       code   0x0000d6    program   0x0001ec
+                 INT_VECT       code   0x000004    program   0x0001ae
+                MAIN_PROG       code   0x0000db    program   0x0002b4
 .config_2007_BUILD/DEFAULT/PRODUCTION/MAIN.O       code   0x002007    program   0x000002
 .config_2008_BUILD/DEFAULT/PRODUCTION/MAIN.O       code   0x002008    program   0x000002
-                     VARS      udata   0x000020       data   0x000039
+                     VARS      udata   0x000020       data   0x00003e
 
 
 
@@ -18,133 +18,147 @@ Linker Map File - Created Fri Nov 27 01:57:41 2020
                                Start         End      
                            ---------   ---------      
                             0x000000    0x000002      
-                            0x000004    0x0001cb      
+                            0x000004    0x000234      
                             0x002007    0x002008      
-            461 out of 8455 program addresses used, program memory utilization is 5%
+            566 out of 8455 program addresses used, program memory utilization is 6%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                ANALOGICO   0x000131    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                 CENTENAS   0x0001a3    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-       CENTENAS_CONVERTIR   0x00018e    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                    CINCO   0x0000be    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     COMA   0x0000ce    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-              COMPUTADORA   0x00013c    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-               CONVERSION   0x00015a    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-     CONVERTIR_BCD_TO_BIN   0x000185    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-     CONVERTIR_BIN_TO_BCD   0x0001a0    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                   CUATRO   0x0000bc    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                  DECENAS   0x0001aa    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-        DECENAS_CONVERTIR   0x000194    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                    DELAY   0x0001c7    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     DIEZ   0x0000c8    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     DOCE   0x0000cc    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                      DOS   0x0000b8    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                   ENVIAR   0x0000d2    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-          ENVIAR_SIN_SUMA   0x0000d3    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                  ES_ADC0   0x000085    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                  ES_ADC1   0x00008a    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                  ES_ADC2   0x00008f    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                  ES_ADC3   0x000094    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                      FIN   0x000098    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                    FINAL   0x0000d0    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                ANALOGICO   0x00013d    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+     CARGA_VALORES_EEPROM   0x00016f    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                 CENTENAS   0x0001df    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+       CENTENAS_CONVERTIR   0x0001ca    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                    CINCO   0x0000c3    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     COMA   0x0000d3    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+              COMPUTADORA   0x000148    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+               CONVERSION   0x000180    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+     CONVERTIR_BCD_TO_BIN   0x0001c1    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+     CONVERTIR_BIN_TO_BCD   0x0001dc    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                   CUATRO   0x0000c1    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                  DECENAS   0x0001e6    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+        DECENAS_CONVERTIR   0x0001d0    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                      DEL   0x00022c    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                    DELAY   0x000230    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+              DELAY_MEDIO   0x00022a    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     DIEZ   0x0000cd    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     DOCE   0x0000d1    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                      DOS   0x0000bd    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                   ENVIAR   0x0000d7    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+          ENVIAR_SIN_SUMA   0x0000d8    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+          ESCRIBIR_EEPROM   0x000203    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                  ES_ADC0   0x00008a    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                  ES_ADC1   0x00008f    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                  ES_ADC2   0x000094    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                  ES_ADC3   0x000099    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                      FIN   0x00009d    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                    FINAL   0x0000d5    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                 FIN_VALOR   0x000055    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                  GUARDAR   0x0001b8    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                  GUARDAR   0x0001f4    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
            INICIO_PERIODO   0x000012    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                  INT_ADC   0x00007b    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                  INT_ADC   0x000080    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                    INT_RX   0x000023    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                  INT_TMR0   0x000009    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     LOAD   0x00009a    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     LOOP   0x00011a    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                 NO_SERVO   0x000079    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                    NUEVE   0x0000c6    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     OCHO   0x0000c4    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     ONCE   0x0000ca    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                       SA   0x00012b    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                  LECTURA   0x00021c    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     LOAD   0x00009f    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     LOOP   0x000125    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                 NO_SERVO   0x00007e    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                    NUEVE   0x0000cb    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     OCHO   0x0000c9    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     ONCE   0x0000cf    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                       SA   0x000136    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                      SAVE   0x000004    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     SEIS   0x0000c0    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                SEND_DATA   0x0000a1    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+              SECUENCIADO   0x000167    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+       SEGUIR_CON_GUARDAR   0x0001ad    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     SEIS   0x0000c5    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                SEND_DATA   0x0000a6    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                    SERVO1   0x000064    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                    SERVO2   0x00006b    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                    SERVO3   0x000072    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                    SIETE   0x0000c2    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                    START   0x0000d6    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-            SUMAR_CENTENA   0x000192    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-             SUMAR_DECENA   0x000198    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-           SUMAR_UNIDADES   0x00019e    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     TRES   0x0000ba    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                 UNIDADES   0x0001b1    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-       UNIDADES_CONVERTIR   0x00019a    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                      UNO   0x0000b6    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                    SIETE   0x0000c7    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                    START   0x0000db    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+            SUMAR_CENTENA   0x0001ce    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+             SUMAR_DECENA   0x0001d4    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+           SUMAR_UNIDADES   0x0001da    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     TRES   0x0000bf    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                 UNIDADES   0x0001ed    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+       UNIDADES_CONVERTIR   0x0001d6    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                      UNO   0x0000bb    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                    VALOR0   0x000032    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                    VALOR1   0x00003b    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                    VALOR2   0x000044    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                    VALOR3   0x00004d    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                VALOR_PWM   0x0001c1    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                VALOR_PWM   0x0001fd    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                  VAL_PWM1   0x000018    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                  VAL_PWM2   0x00001f    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+              VER_GUARDAR   0x000079    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                 VER_VALOR   0x00005d    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-          _MAIN_PROG_00F4   0x0001ca    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+          _MAIN_PROG_013C   0x000217    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+          _MAIN_PROG_0158   0x000233    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                      ADC0   0x000020       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                      ADC1   0x000021       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                      ADC2   0x000022       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                      ADC3   0x000023       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-               AJUSTE_PWM   0x000031       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-               BIN_SERVO0   0x000055       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-               BIN_SERVO1   0x000056       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-               BIN_SERVO2   0x000057       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-               BIN_SERVO3   0x000058       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+               AJUSTE_PWM   0x000032       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+               BIN_SERVO0   0x000056       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+               BIN_SERVO1   0x000057       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+               BIN_SERVO2   0x000058       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+               BIN_SERVO3   0x000059       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
              CONTADOR_ADC   0x000024       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-             CONTADOR_PWM   0x000030       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-              CONTADOR_RC   0x000036       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-              CONTADOR_TX   0x000035       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                  DELAYMS   0x000026       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                  FSR_RAM   0x00002b       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+              CONTADOR_RC   0x000037       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+              CONTADOR_TX   0x000036       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                   DELAY2   0x000028       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                  DELAYMS   0x000027       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+               DIR_EEPROM   0x00005c       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+              DIR_LECTURA   0x00005a       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+              EEPROM_READ   0x00005b       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                    FLAGS   0x000026       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                  FSR_RAM   0x00002d       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                    OPCION   0x000025       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-             PORTA_ACTUAL   0x000028       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-           PORTA_ANTERIOR   0x000027       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     PWM0   0x00002c       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     PWM1   0x00002d       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     PWM2   0x00002e       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     PWM3   0x00002f       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                   RC_AUX   0x000044       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                SECUENCIA   0x000034       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-       SERVO0_CENTENAS_RX   0x000037       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-        SERVO0_DECENAS_RX   0x000038       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-       SERVO0_UNIDADES_RX   0x000039       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-       SERVO1_CENTENAS_RX   0x00003a       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-        SERVO1_DECENAS_RX   0x00003b       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-       SERVO1_UNIDADES_RX   0x00003c       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-       SERVO2_CENTENAS_RX   0x00003d       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-        SERVO2_DECENAS_RX   0x00003e       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-       SERVO2_UNIDADES_RX   0x00003f       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-       SERVO3_CENTENAS_RX   0x000040       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-        SERVO3_DECENAS_RX   0x000041       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-       SERVO3_UNIDADES_RX   0x000042       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-            SERVO_GUARDAR   0x000043       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-               STATUS_RAM   0x00002a       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                 TRABAJO1   0x000032       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                 TRABAJO2   0x000033       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                VALOR_BIN   0x000051       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-           VALOR_CENTENAS   0x000052       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-    VALOR_CENTENAS_SERVO0   0x000045       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-    VALOR_CENTENAS_SERVO1   0x00004e       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-    VALOR_CENTENAS_SERVO2   0x000048       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-    VALOR_CENTENAS_SERVO3   0x00004b       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-            VALOR_DECENAS   0x000053       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-     VALOR_DECENAS_SERVO0   0x000046       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-     VALOR_DECENAS_SERVO1   0x00004f       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-     VALOR_DECENAS_SERVO2   0x000049       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-     VALOR_DECENAS_SERVO3   0x00004c       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-           VALOR_UNIDADES   0x000054       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-    VALOR_UNIDADES_SERVO0   0x000047       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-    VALOR_UNIDADES_SERVO1   0x000050       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-    VALOR_UNIDADES_SERVO2   0x00004a       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-    VALOR_UNIDADES_SERVO3   0x00004d       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                    W_RAM   0x000029       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+             PORTA_ACTUAL   0x00002a       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+           PORTA_ANTERIOR   0x000029       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     PWM0   0x00002e       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     PWM1   0x00002f       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     PWM2   0x000030       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     PWM3   0x000031       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                   RC_AUX   0x000045       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                SECUENCIA   0x000035       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+       SERVO0_CENTENAS_RX   0x000038       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+        SERVO0_DECENAS_RX   0x000039       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+       SERVO0_UNIDADES_RX   0x00003a       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+       SERVO1_CENTENAS_RX   0x00003b       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+        SERVO1_DECENAS_RX   0x00003c       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+       SERVO1_UNIDADES_RX   0x00003d       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+       SERVO2_CENTENAS_RX   0x00003e       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+        SERVO2_DECENAS_RX   0x00003f       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+       SERVO2_UNIDADES_RX   0x000040       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+       SERVO3_CENTENAS_RX   0x000041       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+        SERVO3_DECENAS_RX   0x000042       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+       SERVO3_UNIDADES_RX   0x000043       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+            SERVO_GUARDAR   0x000044       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+               STATUS_RAM   0x00002c       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                 TRABAJO1   0x000033       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                 TRABAJO2   0x000034       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                VALOR_BIN   0x000052       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+           VALOR_CENTENAS   0x000053       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+    VALOR_CENTENAS_SERVO0   0x000046       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+    VALOR_CENTENAS_SERVO1   0x00004f       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+    VALOR_CENTENAS_SERVO2   0x000049       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+    VALOR_CENTENAS_SERVO3   0x00004c       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+            VALOR_DECENAS   0x000054       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+     VALOR_DECENAS_SERVO0   0x000047       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+     VALOR_DECENAS_SERVO1   0x000050       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+     VALOR_DECENAS_SERVO2   0x00004a       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+     VALOR_DECENAS_SERVO3   0x00004d       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+             VALOR_EEPROM   0x00005d       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+           VALOR_UNIDADES   0x000055       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+    VALOR_UNIDADES_SERVO0   0x000048       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+    VALOR_UNIDADES_SERVO1   0x000051       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+    VALOR_UNIDADES_SERVO2   0x00004b       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+    VALOR_UNIDADES_SERVO3   0x00004e       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                    W_RAM   0x00002b       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
 
 
 
@@ -166,108 +180,122 @@ Linker Map File - Created Fri Nov 27 01:57:41 2020
                    SERVO1   0x000064    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                    SERVO2   0x00006b    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                    SERVO3   0x000072    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                 NO_SERVO   0x000079    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                  INT_ADC   0x00007b    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                  ES_ADC0   0x000085    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                  ES_ADC1   0x00008a    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                  ES_ADC2   0x00008f    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                  ES_ADC3   0x000094    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                      FIN   0x000098    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     LOAD   0x00009a    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                SEND_DATA   0x0000a1    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                      UNO   0x0000b6    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                      DOS   0x0000b8    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     TRES   0x0000ba    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                   CUATRO   0x0000bc    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                    CINCO   0x0000be    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     SEIS   0x0000c0    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                    SIETE   0x0000c2    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     OCHO   0x0000c4    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                    NUEVE   0x0000c6    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     DIEZ   0x0000c8    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     ONCE   0x0000ca    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     DOCE   0x0000cc    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     COMA   0x0000ce    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                    FINAL   0x0000d0    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                   ENVIAR   0x0000d2    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-          ENVIAR_SIN_SUMA   0x0000d3    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                    START   0x0000d6    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     LOOP   0x00011a    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                       SA   0x00012b    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                ANALOGICO   0x000131    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-              COMPUTADORA   0x00013c    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-               CONVERSION   0x00015a    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-     CONVERTIR_BCD_TO_BIN   0x000185    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-       CENTENAS_CONVERTIR   0x00018e    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-            SUMAR_CENTENA   0x000192    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-        DECENAS_CONVERTIR   0x000194    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-             SUMAR_DECENA   0x000198    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-       UNIDADES_CONVERTIR   0x00019a    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-           SUMAR_UNIDADES   0x00019e    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-     CONVERTIR_BIN_TO_BCD   0x0001a0    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                 CENTENAS   0x0001a3    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                  DECENAS   0x0001aa    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                 UNIDADES   0x0001b1    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                  GUARDAR   0x0001b8    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                VALOR_PWM   0x0001c1    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                    DELAY   0x0001c7    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-          _MAIN_PROG_00F4   0x0001ca    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+              VER_GUARDAR   0x000079    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                 NO_SERVO   0x00007e    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                  INT_ADC   0x000080    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                  ES_ADC0   0x00008a    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                  ES_ADC1   0x00008f    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                  ES_ADC2   0x000094    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                  ES_ADC3   0x000099    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                      FIN   0x00009d    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     LOAD   0x00009f    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                SEND_DATA   0x0000a6    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                      UNO   0x0000bb    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                      DOS   0x0000bd    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     TRES   0x0000bf    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                   CUATRO   0x0000c1    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                    CINCO   0x0000c3    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     SEIS   0x0000c5    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                    SIETE   0x0000c7    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     OCHO   0x0000c9    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                    NUEVE   0x0000cb    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     DIEZ   0x0000cd    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     ONCE   0x0000cf    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     DOCE   0x0000d1    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     COMA   0x0000d3    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                    FINAL   0x0000d5    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                   ENVIAR   0x0000d7    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+          ENVIAR_SIN_SUMA   0x0000d8    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                    START   0x0000db    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     LOOP   0x000125    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                       SA   0x000136    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                ANALOGICO   0x00013d    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+              COMPUTADORA   0x000148    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+              SECUENCIADO   0x000167    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+     CARGA_VALORES_EEPROM   0x00016f    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+               CONVERSION   0x000180    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+       SEGUIR_CON_GUARDAR   0x0001ad    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+     CONVERTIR_BCD_TO_BIN   0x0001c1    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+       CENTENAS_CONVERTIR   0x0001ca    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+            SUMAR_CENTENA   0x0001ce    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+        DECENAS_CONVERTIR   0x0001d0    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+             SUMAR_DECENA   0x0001d4    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+       UNIDADES_CONVERTIR   0x0001d6    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+           SUMAR_UNIDADES   0x0001da    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+     CONVERTIR_BIN_TO_BCD   0x0001dc    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                 CENTENAS   0x0001df    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                  DECENAS   0x0001e6    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                 UNIDADES   0x0001ed    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                  GUARDAR   0x0001f4    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                VALOR_PWM   0x0001fd    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+          ESCRIBIR_EEPROM   0x000203    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+          _MAIN_PROG_013C   0x000217    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                  LECTURA   0x00021c    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+              DELAY_MEDIO   0x00022a    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                      DEL   0x00022c    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                    DELAY   0x000230    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+          _MAIN_PROG_0158   0x000233    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                      ADC0   0x000020       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                      ADC1   0x000021       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                      ADC2   0x000022       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                      ADC3   0x000023       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
              CONTADOR_ADC   0x000024       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
                    OPCION   0x000025       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                  DELAYMS   0x000026       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-           PORTA_ANTERIOR   0x000027       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-             PORTA_ACTUAL   0x000028       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                    W_RAM   0x000029       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-               STATUS_RAM   0x00002a       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                  FSR_RAM   0x00002b       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     PWM0   0x00002c       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     PWM1   0x00002d       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     PWM2   0x00002e       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                     PWM3   0x00002f       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-             CONTADOR_PWM   0x000030       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-               AJUSTE_PWM   0x000031       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                 TRABAJO1   0x000032       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                 TRABAJO2   0x000033       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                SECUENCIA   0x000034       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-              CONTADOR_TX   0x000035       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-              CONTADOR_RC   0x000036       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-       SERVO0_CENTENAS_RX   0x000037       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-        SERVO0_DECENAS_RX   0x000038       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-       SERVO0_UNIDADES_RX   0x000039       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-       SERVO1_CENTENAS_RX   0x00003a       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-        SERVO1_DECENAS_RX   0x00003b       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-       SERVO1_UNIDADES_RX   0x00003c       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-       SERVO2_CENTENAS_RX   0x00003d       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-        SERVO2_DECENAS_RX   0x00003e       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-       SERVO2_UNIDADES_RX   0x00003f       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-       SERVO3_CENTENAS_RX   0x000040       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-        SERVO3_DECENAS_RX   0x000041       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-       SERVO3_UNIDADES_RX   0x000042       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-            SERVO_GUARDAR   0x000043       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                   RC_AUX   0x000044       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-    VALOR_CENTENAS_SERVO0   0x000045       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-     VALOR_DECENAS_SERVO0   0x000046       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-    VALOR_UNIDADES_SERVO0   0x000047       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-    VALOR_CENTENAS_SERVO2   0x000048       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-     VALOR_DECENAS_SERVO2   0x000049       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-    VALOR_UNIDADES_SERVO2   0x00004a       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-    VALOR_CENTENAS_SERVO3   0x00004b       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-     VALOR_DECENAS_SERVO3   0x00004c       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-    VALOR_UNIDADES_SERVO3   0x00004d       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-    VALOR_CENTENAS_SERVO1   0x00004e       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-     VALOR_DECENAS_SERVO1   0x00004f       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-    VALOR_UNIDADES_SERVO1   0x000050       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-                VALOR_BIN   0x000051       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-           VALOR_CENTENAS   0x000052       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-            VALOR_DECENAS   0x000053       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-           VALOR_UNIDADES   0x000054       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-               BIN_SERVO0   0x000055       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-               BIN_SERVO1   0x000056       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-               BIN_SERVO2   0x000057       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
-               BIN_SERVO3   0x000058       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                    FLAGS   0x000026       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                  DELAYMS   0x000027       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                   DELAY2   0x000028       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+           PORTA_ANTERIOR   0x000029       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+             PORTA_ACTUAL   0x00002a       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                    W_RAM   0x00002b       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+               STATUS_RAM   0x00002c       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                  FSR_RAM   0x00002d       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     PWM0   0x00002e       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     PWM1   0x00002f       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     PWM2   0x000030       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                     PWM3   0x000031       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+               AJUSTE_PWM   0x000032       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                 TRABAJO1   0x000033       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                 TRABAJO2   0x000034       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                SECUENCIA   0x000035       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+              CONTADOR_TX   0x000036       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+              CONTADOR_RC   0x000037       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+       SERVO0_CENTENAS_RX   0x000038       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+        SERVO0_DECENAS_RX   0x000039       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+       SERVO0_UNIDADES_RX   0x00003a       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+       SERVO1_CENTENAS_RX   0x00003b       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+        SERVO1_DECENAS_RX   0x00003c       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+       SERVO1_UNIDADES_RX   0x00003d       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+       SERVO2_CENTENAS_RX   0x00003e       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+        SERVO2_DECENAS_RX   0x00003f       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+       SERVO2_UNIDADES_RX   0x000040       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+       SERVO3_CENTENAS_RX   0x000041       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+        SERVO3_DECENAS_RX   0x000042       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+       SERVO3_UNIDADES_RX   0x000043       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+            SERVO_GUARDAR   0x000044       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                   RC_AUX   0x000045       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+    VALOR_CENTENAS_SERVO0   0x000046       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+     VALOR_DECENAS_SERVO0   0x000047       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+    VALOR_UNIDADES_SERVO0   0x000048       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+    VALOR_CENTENAS_SERVO2   0x000049       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+     VALOR_DECENAS_SERVO2   0x00004a       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+    VALOR_UNIDADES_SERVO2   0x00004b       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+    VALOR_CENTENAS_SERVO3   0x00004c       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+     VALOR_DECENAS_SERVO3   0x00004d       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+    VALOR_UNIDADES_SERVO3   0x00004e       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+    VALOR_CENTENAS_SERVO1   0x00004f       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+     VALOR_DECENAS_SERVO1   0x000050       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+    VALOR_UNIDADES_SERVO1   0x000051       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+                VALOR_BIN   0x000052       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+           VALOR_CENTENAS   0x000053       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+            VALOR_DECENAS   0x000054       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+           VALOR_UNIDADES   0x000055       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+               BIN_SERVO0   0x000056       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+               BIN_SERVO1   0x000057       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+               BIN_SERVO2   0x000058       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+               BIN_SERVO3   0x000059       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+              DIR_LECTURA   0x00005a       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+              EEPROM_READ   0x00005b       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+               DIR_EEPROM   0x00005c       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
+             VALOR_EEPROM   0x00005d       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\Projecto3.X\main.asm
 
 

@@ -1,16 +1,16 @@
 MPLINK 5.09, LINKER
-Linker Map File - Created Thu Nov 26 21:17:10 2020
+Linker Map File - Created Fri Nov 27 02:27:19 2020
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
                 ---------  ---------  ---------  ---------  ---------
                  RES_VECT       code   0x000000    program   0x000002
                    .cinit    romdata   0x000001    program   0x000004
-                 ISR_VECT       code   0x000004    program   0x000070
-                MAIN_PROG       code   0x00003c    program   0x000094
+                 ISR_VECT       code   0x000004    program   0x00006c
+                MAIN_PROG       code   0x00003a    program   0x00008c
 .config_2007_BUILD/DEFAULT/DEBUG/MAIN.O       code   0x002007    program   0x000002
 .config_2008_BUILD/DEFAULT/DEBUG/MAIN.O       code   0x002008    program   0x000002
-                   PR_VAR      udata   0x000020       data   0x00000b
+                   PR_VAR      udata   0x000020       data   0x00000c
 
 
 
@@ -18,31 +18,30 @@ Linker Map File - Created Thu Nov 26 21:17:10 2020
                                Start         End      
                            ---------   ---------      
                             0x000000    0x000002      
-                            0x000004    0x000085      
+                            0x000004    0x00007f      
                             0x002007    0x002008      
-            135 out of 8455 program addresses used, program memory utilization is 1%
+            129 out of 8455 program addresses used, program memory utilization is 1%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                  ADC_INT   0x000018    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-                AJUSTE_CT   0x000079    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-                DELAY_4US   0x00007f    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+                  ADC_INT   0x00001a    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+                AJUSTE_CT   0x000073    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+                DELAY_4US   0x000079    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
              INICIAR_CONV   0x000031    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-                      ISR   0x000007    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-                     LOAD   0x000037    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-                     LOOP   0x00006c    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-                 NEGATIVO   0x000015    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-                 POSITIVO   0x00000f    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+           INICIO_PERIODO   0x000011    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+                      ISR   0x000009    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+                     LOAD   0x000033    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+                     LOOP   0x000063    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+                     PWM2   0x000017    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
                      SAVE   0x000004    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-               SERVO0_ADC   0x000021    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-               SERVO1_ADC   0x000026    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-               SERVO2_ADC   0x00002c    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-                    START   0x00003c    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-                 TMR0_INT   0x000009    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-          _MAIN_PROG_0048   0x000084    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+               SERVO0_ADC   0x000023    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+               SERVO1_ADC   0x000028    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+               SERVO2_ADC   0x00002d    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+                    START   0x00003a    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+          _MAIN_PROG_0044   0x00007e    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
                   ANTIREB   0x000020       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
                     CICLO   0x000024       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
                     CONT1   0x000021       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
@@ -52,6 +51,7 @@ Linker Map File - Created Thu Nov 26 21:17:10 2020
                    SERVO0   0x000025       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
                    SERVO1   0x000026       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
                    SERVO2   0x000027       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+                 TEMP_FSR   0x00002b       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
               TEMP_STATUS   0x000029       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
                    TEMP_W   0x00002a       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
 
@@ -61,21 +61,20 @@ Linker Map File - Created Thu Nov 26 21:17:10 2020
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
                      SAVE   0x000004    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-                      ISR   0x000007    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-                 TMR0_INT   0x000009    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-                 POSITIVO   0x00000f    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-                 NEGATIVO   0x000015    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-                  ADC_INT   0x000018    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-               SERVO0_ADC   0x000021    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-               SERVO1_ADC   0x000026    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-               SERVO2_ADC   0x00002c    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+                      ISR   0x000009    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+           INICIO_PERIODO   0x000011    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+                     PWM2   0x000017    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+                  ADC_INT   0x00001a    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+               SERVO0_ADC   0x000023    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+               SERVO1_ADC   0x000028    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+               SERVO2_ADC   0x00002d    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
              INICIAR_CONV   0x000031    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-                     LOAD   0x000037    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-                    START   0x00003c    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-                     LOOP   0x00006c    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-                AJUSTE_CT   0x000079    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-                DELAY_4US   0x00007f    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
-          _MAIN_PROG_0048   0x000084    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+                     LOAD   0x000033    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+                    START   0x00003a    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+                     LOOP   0x000063    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+                AJUSTE_CT   0x000073    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+                DELAY_4US   0x000079    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+          _MAIN_PROG_0044   0x00007e    program     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
                   ANTIREB   0x000020       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
                     CONT1   0x000021       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
                       CT1   0x000022       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
@@ -87,5 +86,6 @@ Linker Map File - Created Thu Nov 26 21:17:10 2020
                  CONT_ADC   0x000028       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
               TEMP_STATUS   0x000029       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
                    TEMP_W   0x00002a       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
+                 TEMP_FSR   0x00002b       data     static C:\Users\AngelOrellana\OneDrive\Escritorio\uvg\4toSemestre\PrograDeMicros\Proyecto3\ayudaDan.X\main.asm
 
 

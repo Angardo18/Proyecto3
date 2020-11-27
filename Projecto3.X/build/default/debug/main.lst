@@ -1,4 +1,4 @@
-MPASM 5.84                          MAIN.ASM   11-25-2020  19:24:20         PAGE  1
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -37,570 +37,764 @@ Warning[207]: Found label after column 1. (PERIODO)
                       00018  
 Warning[207]: Found label after column 1. (VARS)
                       00019  VARS UDATA
+                      00020  ;-------------------- USO DEL ADC ---------------------------------------------------------------------
+                            --------------------------
 Warning[207]: Found label after column 1. (ADC0)
-0000                  00020  ADC0 RES 1
+0000                  00021  ADC0 RES 1
 Warning[207]: Found label after column 1. (ADC1)
-0001                  00021  ADC1 RES 1
+0001                  00022  ADC1 RES 1
 Warning[207]: Found label after column 1. (ADC2)
-0002                  00022  ADC2 RES 1
+0002                  00023  ADC2 RES 1
 Warning[207]: Found label after column 1. (ADC3)
-0003                  00023  ADC3 RES 1  ;EN ESTAS VARIABLES SE ALMACENA EL VALOR DE LOS CANALES 0-3 DEL ADC
+0003                  00024  ADC3 RES 1  ;EN ESTAS VARIABLES SE ALMACENA EL VALOR DE LOS CANALES 0-3 DEL ADC
 Warning[207]: Found label after column 1. (CONTADOR_ADC)
-0004                  00024  CONTADOR_ADC RES 1 ;CONTADOR QUE INDICA QUE CANAL SE ESTA LEYENDO
+0004                  00025  CONTADOR_ADC RES 1 ;CONTADOR QUE INDICA QUE CANAL SE ESTA LEYENDO
+                      00026  ;------------------------------------------------------------------------------------------------------
+                            ------------------------------
+                      00027  ;------------------------------- CONTROL DE EJECUCION -------------------------------------------------
+                            ------------------
 Warning[207]: Found label after column 1. (FLAGS)
-0005                  00025  FLAGS RES 1 ;BIT 0: INDICA SI ESTA EN MODO MANUAL (0) O MODO CONTROL POR COMPUTADORA
+0005                  00028  FLAGS RES 1 ;BIT 0: INDICA SI ESTA EN MODO MANUAL (0) O MODO CONTROL POR COMPUTADORA (1)
+                      00029  ;------------------------------------------------------------------------------------------------------
+                            -------------------------------
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00030  ;---------------------------------------- GUARDADO DEL AMBIENTE EN INTERRUPCION -----------------------
+                            -------
 Warning[207]: Found label after column 1. (W_RAM)
-0006                  00026  W_RAM RES 1
+0006                  00031  W_RAM RES 1
 Warning[207]: Found label after column 1. (STATUS_RAM)
-0007                  00027  STATUS_RAM RES 1
+0007                  00032  STATUS_RAM RES 1
+                      00033  ;------------------------------------------------------------------------------------------------------
+                            ------------------------------
+                      00034  ;-------------------------- CONTROL DE PWM GENERADO POR SOFTWARE --------------------------------------
+                            ------
 Warning[207]: Found label after column 1. (CONTADOR_PWM)
-0008                  00028  CONTADOR_PWM RES 1
+0008                  00035  CONTADOR_PWM RES 1 ;CUENTA 
 Warning[207]: Found label after column 1. (AJUSTE_PWM)
-0009                  00029  AJUSTE_PWM RES 1 ;VARIABLE QUE TENDRA EL VALOR AJUSTADO DEL PWM
-MPASM 5.84                          MAIN.ASM   11-25-2020  19:24:20         PAGE  2
-
-
-LOC  OBJECT CODE     LINE SOURCE TEXT
-  VALUE
-
-                      00030  
+0009                  00036  AJUSTE_PWM RES 1 ;VARIABLE QUE TENDRA EL VALOR AJUSTADO DEL PWM
+                      00037  
 Warning[207]: Found label after column 1. (TRABAJO1)
-000A                  00031  TRABAJO1 RES 1 ;ESTABLECE EL MOMENTO EN EL QUE SE COLOCA EN 0 EL VALOR PWM
+000A                  00038  TRABAJO1 RES 1 ;ESTABLECE EL MOMENTO EN EL QUE SE COLOCA EN 0 EL VALOR PWM
 Warning[207]: Found label after column 1. (TRABAJO2)
-000B                  00032  TRABAJO2 RES 1 ;LO MISMO QUE TRABAJO 1
+000B                  00039  TRABAJO2 RES 1 ;LO MISMO QUE TRABAJO 1
 Warning[207]: Found label after column 1. (SECUENCIA)
-000C                  00033  SECUENCIA RES 1 ;VARIABLE QUE PERMITE SABER EN QUE POSICICON DE LA SECUENCIA SE ENCUENTRA
-                      00034  
-                      00035  ;----------------- COMUNICACION  SERIAL --------------------------
+000C                  00040  SECUENCIA RES 1 ;VARIABLE QUE PERMITE SABER EN QUE POSICICON DE LA SECUENCIA SE ENCUENTRA
+                      00041  ;------------------------------------------------------------------------------------------------------
+                            -------------------------------
+                      00042  ;----------------- COMUNICACION  SERIAL ---------------------------------------------------------------
+                            ------------------
 Warning[207]: Found label after column 1. (CONTADOR_TX)
-000D                  00036  CONTADOR_TX RES 1
-Warning[207]: Found label after column 1. (VALOR_BIN)
-000E                  00037  VALOR_BIN RES 1
-Warning[207]: Found label after column 1. (VALOR_CENTENAS)
-000F                  00038  VALOR_CENTENAS RES 1
-Warning[207]: Found label after column 1. (VALOR_DECENAS)
-0010                  00039  VALOR_DECENAS  RES 1
-Warning[207]: Found label after column 1. (VALOR_UNIDADES)
-0011                  00040  VALOR_UNIDADES RES  1
-                      00041  
+000D                  00043  CONTADOR_TX RES 1 ;ESTE CONTADOR LLEVA EL REGISTRO DE QUE DATO SE TIENE QUE ENVIAR
+Warning[207]: Found label after column 1. (CONTADOR_RC)
+000E                  00044  CONTADOR_RC RES 1 ;CONTADOR USADO PARA LLEVAR EL REGISTRO DE LOS DATOS RECIBIDOS
+Warning[207]: Found label after column 1. (SERVO0_CENTENAS_RX)
+000F                  00045  SERVO0_CENTENAS_RX  RES 1
+Warning[207]: Found label after column 1. (SERVO0_DECENAS_RX)
+0010                  00046  SERVO0_DECENAS_RX  RES 1
+Warning[207]: Found label after column 1. (SERVO0_UNIDADES_RX)
+0011                  00047  SERVO0_UNIDADES_RX  RES 1
+                      00048  
+Warning[207]: Found label after column 1. (SERVO1_CENTENAS_RX)
+0012                  00049  SERVO1_CENTENAS_RX  RES 1
+Warning[207]: Found label after column 1. (SERVO1_DECENAS_RX)
+0013                  00050  SERVO1_DECENAS_RX  RES 1
+Warning[207]: Found label after column 1. (SERVO1_UNIDADES_RX)
+0014                  00051  SERVO1_UNIDADES_RX  RES 1
+                      00052  
+Warning[207]: Found label after column 1. (SERVO2_CENTENAS_RX)
+0015                  00053  SERVO2_CENTENAS_RX  RES 1
+Warning[207]: Found label after column 1. (SERVO2_DECENAS_RX)
+0016                  00054  SERVO2_DECENAS_RX  RES 1
+Warning[207]: Found label after column 1. (SERVO2_UNIDADES_RX)
+0017                  00055  SERVO2_UNIDADES_RX  RES 1
+                      00056 
+Warning[207]: Found label after column 1. (SERVO3_CENTENAS_RX)
+0018                  00057  SERVO3_CENTENAS_RX  RES 1
+Warning[207]: Found label after column 1. (SERVO3_DECENAS_RX)
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0019                  00058  SERVO3_DECENAS_RX  RES 1
+Warning[207]: Found label after column 1. (SERVO3_UNIDADES_RX)
+001A                  00059  SERVO3_UNIDADES_RX  RES 1 ;ESTAS VARIABLES REPRESENTAN EL VALOR RECIBIDO PARA EL SERVO DESDE LA PC
+                      00060   
+Warning[207]: Found label after column 1. (SERVO_GUARDAR)
+001B                  00061  SERVO_GUARDAR RES 1 ;REPRESENTA EL VALOR DEL SERVO QUE SE VA A GUARDAR.
+Warning[207]: Found label after column 1. (RC_AUX)
+001C                  00062  RC_AUX RES 1
+                      00063  ;VALORES EN BCD DEL SERVO
 Warning[207]: Found label after column 1. (VALOR_CENTENAS_SERVO0)
-0012                  00042  VALOR_CENTENAS_SERVO0 RES 1
+001D                  00064  VALOR_CENTENAS_SERVO0 RES 1
 Warning[207]: Found label after column 1. (VALOR_DECENAS_SERVO0)
-0013                  00043  VALOR_DECENAS_SERVO0  RES 1
+001E                  00065  VALOR_DECENAS_SERVO0  RES 1
 Warning[207]: Found label after column 1. (VALOR_UNIDADES_SERVO0)
-0014                  00044  VALOR_UNIDADES_SERVO0 RES  1
-                      00045  
+001F                  00066  VALOR_UNIDADES_SERVO0 RES  1
+                      00067  
 Warning[207]: Found label after column 1. (VALOR_CENTENAS_SERVO2)
-0015                  00046  VALOR_CENTENAS_SERVO2 RES 1
+0020                  00068  VALOR_CENTENAS_SERVO2 RES 1
 Warning[207]: Found label after column 1. (VALOR_DECENAS_SERVO2)
-0016                  00047  VALOR_DECENAS_SERVO2  RES 1
+0021                  00069  VALOR_DECENAS_SERVO2  RES 1
 Warning[207]: Found label after column 1. (VALOR_UNIDADES_SERVO2)
-0017                  00048  VALOR_UNIDADES_SERVO2 RES  1
-                      00049  
+0022                  00070  VALOR_UNIDADES_SERVO2 RES  1
+                      00071  
 Warning[207]: Found label after column 1. (VALOR_CENTENAS_SERVO3)
-0018                  00050  VALOR_CENTENAS_SERVO3 RES 1
+0023                  00072  VALOR_CENTENAS_SERVO3 RES 1
 Warning[207]: Found label after column 1. (VALOR_DECENAS_SERVO3)
-0019                  00051  VALOR_DECENAS_SERVO3  RES 1
+0024                  00073  VALOR_DECENAS_SERVO3  RES 1
 Warning[207]: Found label after column 1. (VALOR_UNIDADES_SERVO3)
-001A                  00052  VALOR_UNIDADES_SERVO3 RES  1
-                      00053  
+0025                  00074  VALOR_UNIDADES_SERVO3 RES  1
+                      00075  
 Warning[207]: Found label after column 1. (VALOR_CENTENAS_SERVO1)
-001B                  00054  VALOR_CENTENAS_SERVO1 RES 1
+0026                  00076  VALOR_CENTENAS_SERVO1 RES 1
 Warning[207]: Found label after column 1. (VALOR_DECENAS_SERVO1)
-001C                  00055  VALOR_DECENAS_SERVO1  RES 1
+0027                  00077  VALOR_DECENAS_SERVO1  RES 1
 Warning[207]: Found label after column 1. (VALOR_UNIDADES_SERVO1)
-001D                  00056  VALOR_UNIDADES_SERVO1 RES  1
-                      00057  
-                      00058 RES_VECT  CODE    0x0000            ; processor reset vector
-0000   2???           00059     GOTO    START                   ; go to beginning of program
-                      00060 
-                      00061 ; TODO ADD INTERRUPTS HERE IF USED
-                      00062 INT_VECT    CODE 0x0004
-MPASM 5.84                          MAIN.ASM   11-25-2020  19:24:20         PAGE  3
+0028                  00078  VALOR_UNIDADES_SERVO1 RES  1
+                      00079  ;------------------------------------------------------------------------------------------------------
+                            -------------------------
+                      00080  ;--------- CONVERSION BINARIO A BCD--------------------------------------------------------------------
+                            -----------
+Warning[207]: Found label after column 1. (VALOR_BIN)
+0029                  00081  VALOR_BIN RES 1
+Warning[207]: Found label after column 1. (VALOR_CENTENAS)
+002A                  00082  VALOR_CENTENAS RES 1
+Warning[207]: Found label after column 1. (VALOR_DECENAS)
+002B                  00083  VALOR_DECENAS  RES 1
+Warning[207]: Found label after column 1. (VALOR_UNIDADES)
+002C                  00084  VALOR_UNIDADES RES  1
+                      00085  ;------------------------------------------------------------------------------------------------------
+                            ------------------------
+                      00086  ;----------- VALORES EN BCD DEL ADC DE LOS SERVOMOTORES --------------
+                      00087 
+                      00088  ;
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE  4
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-                      00063     
-0004                  00064 SAVE:
-0004   00??           00065     MOVWF   W_RAM
-0005   0E03           00066     SWAPF   STATUS,W
-0006   00??           00067     MOVWF   STATUS_RAM
-                      00068     
-0007                  00069 INT_TMR0:
-0007   1D0B           00070     BTFSS   INTCON,T0IF
-0008   2???           00071     GOTO    INT_ADC
-                      00072     
-0009   110B           00073     BCF INTCON,T0IF
-000A   08??           00074     MOVF    SECUENCIA,W
-000B   0782           00075     ADDWF   PCL, F
-000C   2???           00076     GOTO    INICIO_PERIODO ;este contador LLEVA EN CONTROL DE LA SECUENCIA PARA LA GENERACION PWM
-000D   2???           00077     GOTO    PWM1
-000E   2???           00078     GOTO    PWM2
-                      00079     
-000F   01??           00080     CLRF    SECUENCIA
+                      00089  
+                      00090  
+                      00091 RES_VECT  CODE    0x0000            ; processor reset vector
+0000   2???           00092     GOTO    START                   ; go to beginning of program
+                      00093 
+                      00094 ; TODO ADD INTERRUPTS HERE IF USED
+                      00095 INT_VECT    CODE 0x0004
+                      00096     
+0004                  00097 SAVE:
+0004   00??           00098     MOVWF   W_RAM
+0005   0E03           00099     SWAPF   STATUS,W
+0006   00??           00100     MOVWF   STATUS_RAM
+                      00101 
+0007                  00102 INT_TMR0:
+0007   1D0B           00103     BTFSS   INTCON,T0IF
+0008   2???           00104     GOTO    INT_RX
+                      00105     
+0009   110B           00106     BCF INTCON,T0IF
+000A   08??           00107     MOVF    SECUENCIA,W
+000B   0782           00108     ADDWF   PCL, F
+000C   2???           00109     GOTO    INICIO_PERIODO ;este contador LLEVA EN CONTROL DE LA SECUENCIA PARA LA GENERACION PWM
+000D   2???           00110     GOTO    PWM1
+000E   2???           00111     GOTO    PWM2
+                      00112     
+000F   01??           00113     CLRF    SECUENCIA
 Warning[207]: Found label after column 1. (INICIO_PERIODO)
-0010                  00081     INICIO_PERIODO ;EN LA PRIMERA FASE SE COLOCA EN 1 EL PIN RC0 Y RC3 SE ENCUENTRA EN 0
-0010   1407           00082     BSF PORTC, RC0 ;SE COLOCA EN 1
-0011   08??           00083     MOVF    TRABAJO1,W 
-0012   0181           00084     CLRF        TMR0
-0013   0281           00085     SUBWF   TMR0,F  ;TMRO =  256 - TRABAJO1
-0014   0A??           00086     INCF    SECUENCIA,F ;A LA SIGUIENTE ENTRADA SE EJECUTA PWM1
-0015   2???           00087     GOTO INT_ADC
-                      00088     
+0010                  00114     INICIO_PERIODO ;EN LA PRIMERA FASE SE COLOCA EN 1 EL PIN RC0 Y RC3 SE ENCUENTRA EN 0
+0010   1407           00115     BSF PORTC, RC0 ;SE COLOCA EN 1
+0011   08??           00116     MOVF    TRABAJO1,W 
+0012   0181           00117     CLRF        TMR0
+0013   0281           00118     SUBWF   TMR0,F  ;TMRO =  256 - TRABAJO1
+0014   0A??           00119     INCF    SECUENCIA,F ;A LA SIGUIENTE ENTRADA SE EJECUTA PWM1
+0015   2???           00120     GOTO INT_RX
+                      00121     
 Warning[207]: Found label after column 1. (PWM1)
-0016                  00089     PWM1
-0016   1007           00090     BCF PORTC,RC0 ;AL PASAR EL TIEMPO ESTABLECIDO POR LA VARIABLE TRABAJO 1
-0017   1587           00091     BSF PORTC, RC3
-0018   08??           00092     MOVF   TRABAJO2,W
-0019   0181           00093     CLRF TMR0
-001A   0281           00094     SUBWF   TMR0,F ;256 - TRABAJO2
-001B   0A??           00095     INCF SECUENCIA,F
-001C   2???           00096     GOTO INT_ADC
-                      00097     
+0016                  00122     PWM1
+0016   1007           00123     BCF PORTC,RC0 ;AL PASAR EL TIEMPO ESTABLECIDO POR LA VARIABLE TRABAJO 1
+0017   1587           00124     BSF PORTC, RC3
+0018   08??           00125     MOVF   TRABAJO2,W
+0019   0181           00126     CLRF TMR0
+001A   0281           00127     SUBWF   TMR0,F ;256 - TRABAJO2
+001B   0A??           00128     INCF SECUENCIA,F
+001C   2???           00129     GOTO INT_RX
+                      00130     
 Warning[207]: Found label after column 1. (PWM2)
-001D                  00098     PWM2
-001D   1007           00099     BCF PORTC,RC0
-001E   1187           00100     BCF PORTC,RC3
-001F   0181           00101     CLRF        TMR0 ;LA SIGUIENTE INTERRUPCION OCURRIRA DENTRO DE 4.09mS
-0020   0A??           00102     INCF SECUENCIA,F
-                      00103     
-                      00104     
-0021                  00105 INT_ADC:
-0021   1F0C           00106     BTFSS   PIR1, ADIF 
-0022   2???           00107     GOTO    LOAD ;SI NO ESTA ACTIVA SE SALE
-                      00108     
-0023   130C           00109     BCF PIR1, ADIF
-0024   08??           00110     MOVF    CONTADOR_ADC,W
-0025   0782           00111     ADDWF   PCL,F   
-0026   2???           00112     GOTO    ES_ADC0
-MPASM 5.84                          MAIN.ASM   11-25-2020  19:24:20         PAGE  4
+001D                  00131     PWM2
+001D   1007           00132     BCF PORTC,RC0
+001E   1187           00133     BCF PORTC,RC3
+001F   0181           00134     CLRF        TMR0 ;LA SIGUIENTE INTERRUPCION OCURRIRA DENTRO DE 4.09mS
+0020   0A??           00135     INCF SECUENCIA,F
+                      00136 
+0021                  00137 INT_RX:
+0021   1E8C           00138     BTFSS   PIR1, RCIF
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE  5
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-0027   2???           00113     GOTO    ES_ADC1
-0028   2???           00114     GOTO    ES_ADC2
-0029   2???           00115     GOTO    ES_ADC3
-002A   01??           00116     CLRF    CONTADOR_ADC
-Warning[207]: Found label after column 1. (ES_ADC0)
-002B                  00117     ES_ADC0
-002B   081E           00118     MOVF    ADRESH, W
-002C   00??           00119     MOVWF   ADC0
-002D   119F           00120     BCF ADCON0,CHS1
-002E   151F           00121     BSF ADCON0,CHS0 ;SE SELECCIONA EL CANAL 1
-002F   2???           00122     GOTO FIN
-                      00123     
-Warning[207]: Found label after column 1. (ES_ADC1)
-0030                  00124     ES_ADC1
-0030   081E           00125     MOVF    ADRESH, W
-0031   00??           00126     MOVWF   ADC1
-0032   159F           00127     BSF ADCON0,CHS1
-0033   111F           00128     BCF ADCON0,CHS0 ;SE SELECCIONA EL CANAL 2
-0034   2???           00129     GOTO FIN
-                      00130    
-Warning[207]: Found label after column 1. (ES_ADC2)
-0035                  00131     ES_ADC2
-0035   081E           00132     MOVF    ADRESH,W
-0036   00??           00133     MOVWF   ADC2
-0037   159F           00134     BSF ADCON0,CHS1
-0038   151F           00135     BSF ADCON0,CHS0 ;SE SELECCIONA EL CANAL 3
-0039   2???           00136     GOTO FIN
-                      00137     
-Warning[207]: Found label after column 1. (ES_ADC3)
-003A                  00138     ES_ADC3
-003A   081E           00139     MOVF    ADRESH,W
-003B   00??           00140     MOVWF   ADC3
-003C   119F           00141     BCF ADCON0,CHS1
-003D   111F           00142     BCF ADCON0,CHS0 ;SE SELECCIONA CANAL 0
+0022   2???           00139     GOTO    INT_ADC
+                      00140     
+0023   081A           00141     MOVF    RCREG,W
+0024   00??           00142     MOVWF   RC_AUX
                       00143     
-Warning[207]: Found label after column 1. (FIN)
-003E                  00144     FIN
-003E   0A??           00145     INCF    CONTADOR_ADC,F
-003F   149F           00146     BSF ADCON0,GO ;INICIA CONVERSION
-                      00147     
-0040                  00148 LOAD:
-0040   0E??           00149     SWAPF   STATUS_RAM,W
-0041   0083           00150     MOVWF   STATUS
-0042   0E??           00151     SWAPF   W_RAM,F
-0043   0E??           00152     SWAPF   W_RAM,W
-0044   0009           00153     RETFIE
-                      00154     
-0045                  00155 SEND_DATA:
-0045   1E0C           00156     BTFSS   PIR1,TXIF ;SI NO ESTA OCUPADO SE SALTA EL RETURN
-0046   0008           00157     RETURN
-                      00158    
-                      00159     ;----- SE DETERMINA QUE DATO HAY QUE ENVIAR -------------------------------
-0047   08??           00160     MOVF    CONTADOR_TX,W
-MPASM 5.84                          MAIN.ASM   11-25-2020  19:24:20         PAGE  5
+0025   08??           00144     MOVF    SERVO_GUARDAR,W
+0026   3C00           00145     SUBLW .0    ; SI Z ES 1 SIGNIFICA QUE SERVO_GUARDAR = 0 CON LO QUE EL DATO ANTERIOR
+0027   1903           00146     BTFSC   STATUS, Z ; NO FUE NI A,B,C NI D, CON LO QUE EL DATO RECIBIDO EN ESTA OCACION NO INDICA
+0028   2???           00147     GOTO    VER_VALOR; UN VALOR PARA EL PWM
+                      00148     ;---------- SE EJECUTA AQUI SI  Z ES CERO -----------------------------------------
+0029   08??           00149     MOVF    SERVO_GUARDAR,W
+002A   0782           00150     ADDWF   PCL,F ;LOOK UP TABLE
+002B   2???           00151     GOTO    VALOR0; DEPENDIENDO DEL VALOR SERVO GUARDAR, QUE DEPENDE DE SI EL DATO ANTERIOR
+002C   2???           00152     GOTO    VALOR1; ERA A,B,C o D, SE GUARDARA ESTE DATO ENTRANTE EN LA VARIABLE DE PWM CORRESPONDIENTE
+002D   2???           00153     GOTO    VALOR2
+002E   2???           00154     GOTO    VALOR3
+Warning[207]: Found label after column 1. (VALOR0)
+002F                  00155     VALOR0
+                      00156     ;PARA ESTO SE IRA DE LA MANO DE QUE CON UDATA LAS VARIABLES SE VAN ESCRIBIENDO UNA 
+                      00157     ; TRAS OTRA EN LA RAM, EN DIRECCIONES CONTINUAS DE FORMA QUE LA DIRECCION
+                      00158     ;DE SERVOX_UNIDADES_RC ES LA DIRECICON DE SERVOx_CENTENAS + 2
+                      00159     ;ASI CONTADOR RC DETERMINA SI SE GUARDA EN CENTENAS DECENAS  O UNIDADES
+                      00160     ; Y DE ESTA FORMA CON EL DIRECCIONAMIENTO INDIRECTO SE APUNTA AL VALOR NECESARIO
+                      00161     ;SIN TENER QUE HACER VARIOS "SELECT CASE" SINO UNICAMENTE 1 "SELECT CASE"
+                      00162     ;Y SE PUEDE GUARDAR TANTO A LAS DECENAS CENTENAS Y UNIDADES SE APUNTA AL SIGIENTE DATO DEL ARREGLO
+002F   08??           00163     MOVF    RC_AUX,W 
+0030   30??           00164     MOVLW SERVO0_CENTENAS_RX 
+0031   07??           00165     ADDWF  CONTADOR_RC, W 
+0032   0084           00166     MOVWF   FSR 
+0033   3030           00167     MOVLW .48 ;(SE CONVIERTE A BCD)
+0034   02??           00168     SUBWF   RC_AUX,W
+0035   0080           00169     MOVWF   INDF 
+0036   0A??           00170     INCF    CONTADOR_RC,F ;
+0037   2???           00171     GOTO FIN_VALOR
+Warning[207]: Found label after column 1. (VALOR1)
+0038                  00172     VALOR1
+0038   08??           00173      MOVF    RC_AUX,W 
+0039   30??           00174     MOVLW SERVO1_CENTENAS_RX 
+003A   07??           00175     ADDWF  CONTADOR_RC, W 
+003B   0084           00176     MOVWF   FSR 
+003C   3030           00177     MOVLW .48 ;(SE CONVIERTE A BCD)
+003D   02??           00178     SUBWF   RC_AUX,W
+003E   0080           00179     MOVWF   INDF 
+003F   0A??           00180     INCF    CONTADOR_RC,F ;
+0040   2???           00181     GOTO FIN_VALOR
+Warning[207]: Found label after column 1. (VALOR2)
+0041                  00182     VALOR2
+0041   08??           00183     MOVF    RC_AUX,W 
+0042   30??           00184     MOVLW SERVO2_CENTENAS_RX 
+0043   07??           00185     ADDWF  CONTADOR_RC, W 
+0044   0084           00186     MOVWF   FSR 
+0045   3030           00187     MOVLW .48 ;(SE CONVIERTE A BCD)
+0046   02??           00188     SUBWF   RC_AUX,W
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE  6
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-0048   0782           00161    ADDWF   PCL,F
-0049   2???           00162     GOTO    UNO
-004A   2???           00163     GOTO    DOS
-004B   2???           00164     GOTO    TRES
-004C   2???           00165     GOTO    COMA
-004D   2???           00166     GOTO    CUATRO
-004E   2???           00167     GOTO    CINCO
-004F   2???           00168     GOTO    SEIS
-0050   2???           00169     GOTO    COMA
-0051   2???           00170     GOTO    SIETE
-0052   2???           00171     GOTO    OCHO
-0053   2???           00172     GOTO    NUEVE
-0054   2???           00173     GOTO    COMA
-0055   2???           00174     GOTO    DIEZ
-0056   2???           00175     GOTO    ONCE
-0057   2???           00176     GOTO    DOCE
-0058   2???           00177     GOTO    FINAL
-0059   01??           00178     CLRF    CONTADOR_TX
-                      00179 
-Warning[207]: Found label after column 1. (UNO)
-005A                  00180     UNO
-005A   08??           00181     MOVF    VALOR_CENTENAS_SERVO0,W
-005B   2???           00182     GOTO ENVIAR
-Warning[207]: Found label after column 1. (DOS)
-005C                  00183     DOS
-005C   08??           00184     MOVF VALOR_DECENAS_SERVO0,W
-005D   2???           00185     GOTO ENVIAR
-Warning[207]: Found label after column 1. (TRES)
-005E                  00186     TRES
-005E   08??           00187     MOVF VALOR_UNIDADES_SERVO0,W
-005F   2???           00188     GOTO ENVIAR
-Warning[207]: Found label after column 1. (CUATRO)
-0060                  00189     CUATRO
-0060   08??           00190     MOVF    VALOR_CENTENAS_SERVO1,W
-0061   2???           00191     GOTO ENVIAR
-Warning[207]: Found label after column 1. (CINCO)
-0062                  00192     CINCO
-0062   08??           00193     MOVF VALOR_DECENAS_SERVO1,W
-0063   2???           00194     GOTO ENVIAR
-Warning[207]: Found label after column 1. (SEIS)
-0064                  00195     SEIS
-0064   08??           00196     MOVF VALOR_UNIDADES_SERVO1,W
-0065   2???           00197     GOTO ENVIAR
-Warning[207]: Found label after column 1. (SIETE)
-0066                  00198     SIETE
-0066   08??           00199     MOVF    VALOR_CENTENAS_SERVO2,W
-0067   2???           00200     GOTO ENVIAR
-Warning[207]: Found label after column 1. (OCHO)
-0068                  00201     OCHO
-0068   08??           00202     MOVF VALOR_DECENAS_SERVO2,W
-0069   2???           00203     GOTO ENVIAR
-Warning[207]: Found label after column 1. (NUEVE)
-006A                  00204     NUEVE
-MPASM 5.84                          MAIN.ASM   11-25-2020  19:24:20         PAGE  6
+0047   0080           00189     MOVWF   INDF 
+0048   0A??           00190     INCF    CONTADOR_RC,F ;
+0049   2???           00191     GOTO FIN_VALOR
+Warning[207]: Found label after column 1. (VALOR3)
+004A                  00192     VALOR3
+004A   08??           00193     MOVF    RC_AUX,W 
+004B   30??           00194     MOVLW SERVO3_CENTENAS_RX 
+004C   07??           00195     ADDWF  CONTADOR_RC, W 
+004D   0084           00196     MOVWF   FSR 
+004E   3030           00197     MOVLW .48 ;(SE CONVIERTE A BCD)
+004F   02??           00198     SUBWF   RC_AUX,W
+0050   0080           00199     MOVWF   INDF 
+0051   0A??           00200     INCF    CONTADOR_RC,F ;
+Warning[207]: Found label after column 1. (FIN_VALOR)
+0052                  00201     FIN_VALOR ;AQUI SE VERIFICA SI EL CONTADOR YA ES 3
+0052   08??           00202     MOVF    CONTADOR_RC,W
+0053   3C03           00203     SUBLW  .3
+0054   1D03           00204     BTFSS   STATUS,Z ;SI CONTADOR_RC ES 3 NTONCES SE SALTA LA INSTRUCCION
+0055   2???           00205     GOTO    INT_ADC
+                      00206     ;--------------- SE EJECUTA AQUI SI CONTAODOR_RC ES 3 --------------
+0056   01??           00207     CLRF    CONTADOR_RC
+0057   01??           00208     CLRF    SERVO_GUARDAR ;SE ACABA LA INSTRUCCION A LA ESPERA DE UNA NUEVA
+0058   2???           00209     GOTO   INT_ADC
+                      00210     ;------------------------------------------------------------------------------------------------
+Warning[207]: Found label after column 1. (VER_VALOR)
+0059                  00211     VER_VALOR
+0059   08??           00212     MOVF    RC_AUX,W
+005A   3C41           00213     SUBLW .65 ;SE VERIFICA SI EL VALOR ES A
+005B   1D03           00214     BTFSS STATUS, Z; SI LO ANTERIOR DA CERO NO SE SALTA
+005C   2???           00215     GOTO  SERVO1
+                      00216     ;-------- SE ES A SE EJECUTA AQUI--------------
+005D   3001           00217     MOVLW   .1 ;VALOR QUE SE USARA PARA UN LOOK UP TABLE MAS ADELANTE
+005E   00??           00218     MOVWF SERVO_GUARDAR 
+005F   2???           00219     GOTO INT_ADC ;SE SALE
+                      00220     
+Warning[207]: Found label after column 1. (SERVO1)
+0060                  00221     SERVO1
+0060   08??           00222     MOVF    RC_AUX,W
+0061   3C42           00223     SUBLW .66 ;SE VE SI ES B
+0062   1D03           00224     BTFSS   STATUS,Z
+0063   2???           00225     GOTO SERVO2
+                      00226     ;-------- SI ES B SE EJECUTA AQUI--------------
+0064   3002           00227     MOVLW .2 ; LO MISMO QUE ANTES
+0065   00??           00228     MOVWF   SERVO_GUARDAR
+0066   2???           00229     GOTO    INT_ADC ; SE ESPERA A LA SIGUIENTE
+                      00230     ;------------------------------------------------------------
+Warning[207]: Found label after column 1. (SERVO2)
+0067                  00231     SERVO2
+0067   08??           00232     MOVF    RC_AUX,W
+0068   3C43           00233     SUBLW .67 ;SE VERIFICA SI ES C
+0069   1D03           00234     BTFSS   STATUS,Z
+006A   2???           00235     GOTO    SERVO3
+                      00236     ;--------------- SI ES C SE EJECUTA AQUI -----------
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE  7
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-006A   08??           00205     MOVF VALOR_UNIDADES_SERVO2,W
-006B   2???           00206     GOTO ENVIAR
-Warning[207]: Found label after column 1. (DIEZ)
-006C                  00207     DIEZ
-006C   08??           00208     MOVF    VALOR_CENTENAS_SERVO3,W
-006D   2???           00209     GOTO ENVIAR
-Warning[207]: Found label after column 1. (ONCE)
-006E                  00210     ONCE
-006E   08??           00211     MOVF VALOR_DECENAS_SERVO3,W
-006F   2???           00212     GOTO ENVIAR
-Warning[207]: Found label after column 1. (DOCE)
-0070                  00213     DOCE
-0070   08??           00214     MOVF VALOR_UNIDADES_SERVO3,W
-0071   2???           00215     GOTO ENVIAR
-Warning[207]: Found label after column 1. (COMA)
-0072                  00216     COMA
-0072   302C           00217     MOVLW   .44 ;COMA EN ASCII
-0073   2???           00218     GOTO    ENVIAR_SIN_SUMA
-Warning[207]: Found label after column 1. (FINAL)
-0074                  00219     FINAL
-0074   300A           00220     MOVLW   .10 ;SALTO DE LINEA
-0075   2???           00221     GOTO    ENVIAR_SIN_SUMA
-Warning[207]: Found label after column 1. (ENVIAR)
-0076                  00222     ENVIAR
-0076   3E30           00223     ADDLW   .48 ;SE PASA DE BCD A ASCII
-Warning[207]: Found label after column 1. (ENVIAR_SIN_SUMA)
-0077                  00224     ENVIAR_SIN_SUMA
-0077   0099           00225     MOVWF   TXREG
-0078   0A??           00226     INCF    CONTADOR_TX,F
-0079   0008           00227     RETURN
-                      00228     
-                      00229 MAIN_PROG CODE                      ; let linker place main program
-                      00230  
-Warning[207]: Found label after column 1. (START)
-0000                  00231  START
-0000   1783           00232     BSF STATUS, IRP ;BANCO 2 Y 3 EN EL DIRECCIONAMIENTO INDIRECTO
-0001   1703           00233     BSF STATUS, RP1
-0002   1683           00234     BSF STATUS, RP0 ;BANCO 3
-                      00235     
-0003   300F           00236     MOVLW B'00001111'
-Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0004   0088           00237     MOVWF ANSEL
-Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0005   0189           00238     CLRF    ANSELH 
-                      00239     
-Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0006   1281           00240     BCF OPTION_REG, T0CS ;FUENTE DE RELOL FOSC/4
-Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0007   1181           00241     BCF OPTION_REG, PSA ;PRESCALER ASIGNADO AL TMR0
-Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0008   1101           00242     BCF OPTION_REG, PS2
-Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0009   1481           00243     BSF OPTION_REG,PS1
-MPASM 5.84                          MAIN.ASM   11-25-2020  19:24:20         PAGE  7
-
-
-LOC  OBJECT CODE     LINE SOURCE TEXT
-  VALUE
-
-Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-000A   1401           00244     BSF OPTION_REG,PS0 ;PRESCALER DE 1:16 (ESTO PARA QUE LOS VALORES OBTENIDOS EN LA RUTINA
-                      00245                         ;VALOR PWM, TAMBIEN SEAN VALIDOS PARA ESTE TIMER)
-                      00246     
-000B   1303           00247     BCF STATUS,RP1 ;BANCO 1
-000C   30FF           00248     MOVLW   .255
-Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-000D   0085           00249     MOVWF   TRISA
-Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-000E   0187           00250     CLRF           TRISC
-Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-000F   0188           00251     CLRF           TRISD
-                      00252     
+006B   3003           00237     MOVLW .3
+006C   00??           00238     MOVWF   SERVO_GUARDAR ;LO MISMO
+006D   2???           00239     GOTO INT_ADC; SE ESPERA A QUE EL SIGUIENTE DATO ENTRE
+                      00240     ;--------------------------------------------------------------
+Warning[207]: Found label after column 1. (SERVO3)
+006E                  00241     SERVO3
+006E   08??           00242     MOVF    RC_AUX,W
+006F   3C44           00243     SUBLW .68 ;SE VERIFICA SI ES D
+0070   1D03           00244     BTFSS   STATUS,Z
+0071   2???           00245     GOTO NO_SERVO
+                      00246     ;---------- SI ES D SE EJECUTA AQUI -------------------
+0072   3004           00247     MOVLW .4
+0073   00??           00248     MOVWF   SERVO_GUARDAR
+0074   2???           00249     GOTO INT_ADC
+                      00250     ;------------------------------------------------------------------
+Warning[207]: Found label after column 1. (NO_SERVO)
+0075                  00251     NO_SERVO
+0075   01??           00252     CLRF    SERVO_GUARDAR ;0 , SE AMPLIARA PARA FUTURAS MEJORAS
                       00253     
                       00254     
-                      00255     ;------------- INTERRUPCIONES -------------------------------------------------
-0010   178B           00256     BSF INTCON,GIE 
-0011   170B           00257     BSF INTCON, PEIE
-                      00258   
-                      00259     
-Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0012   170C           00260     BSF PIE1, ADIE ;INTERRUPCION ADC ACTIVADA
-                      00261     ;---------------------------------------------------------------------------------------
-0013   30FF           00262     MOVLW .255 
-Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0014   0092           00263     MOVWF  PR2 ;PERIODO DE  4.09 mS aproximadamente EN PWM
-Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0015   019F           00264     CLRF    ADCON1 
-                      00265      ;--------------------  EUSART ----------------------------------------------------
-Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0016   1318           00266      BCF        TXSTA,TX9
-Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0017   1698           00267      BSF        TXSTA, TXEN
-Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0018   1218           00268      BCF        TXSTA, SYNC
-Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0019   1518           00269      BSF        TXSTA, BRGH
-                      00270      
-                      00271     
-001A   1283           00272     BCF STATUS,RP0 ;BANCO 0
+0076                  00255 INT_ADC:
+0076   1F0C           00256     BTFSS   PIR1, ADIF 
+0077   2???           00257     GOTO    LOAD ;SI NO ESTA ACTIVA SE SALE
+                      00258     
+0078   130C           00259     BCF PIR1, ADIF
+0079   08??           00260     MOVF    CONTADOR_ADC,W
+007A   0782           00261     ADDWF   PCL,F   
+007B   2???           00262     GOTO    ES_ADC0
+007C   2???           00263     GOTO    ES_ADC1
+007D   2???           00264     GOTO    ES_ADC2
+007E   2???           00265     GOTO    ES_ADC3
+007F   01??           00266     CLRF    CONTADOR_ADC
+Warning[207]: Found label after column 1. (ES_ADC0)
+0080                  00267     ES_ADC0
+0080   081E           00268     MOVF    ADRESH, W
+0081   00??           00269     MOVWF   ADC0
+0082   119F           00270     BCF ADCON0,CHS1
+0083   151F           00271     BSF ADCON0,CHS0 ;SE SELECCIONA EL CANAL 1
+0084   2???           00272     GOTO FIN
                       00273     
-001B   1798           00274     BSF RCSTA, SPEN
-001C   1318           00275     BCF RCSTA, RX9
-001D   1618           00276     BSF RCSTA, CREN
-                      00277 
-001E   3019           00278     MOVLW   .25 ;9615 DE BAUDRATE
-Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-001F   0099           00279     MOVWF   SPBRG
-                      00280     ;------------------------- SIGIENTDO CON LAS INTERRUPCIONES -----------------
-                      00281     
-0020   110B           00282     BCF INTCON, T0IF
-0021   0181           00283     CLRF        TMR0
-0022   168B           00284     BSF INTCON, T0IE
-MPASM 5.84                          MAIN.ASM   11-25-2020  19:24:20         PAGE  8
+Warning[207]: Found label after column 1. (ES_ADC1)
+0085                  00274     ES_ADC1
+0085   081E           00275     MOVF    ADRESH, W
+0086   00??           00276     MOVWF   ADC1
+0087   159F           00277     BSF ADCON0,CHS1
+0088   111F           00278     BCF ADCON0,CHS0 ;SE SELECCIONA EL CANAL 2
+0089   2???           00279     GOTO FIN
+                      00280    
+Warning[207]: Found label after column 1. (ES_ADC2)
+008A                  00281     ES_ADC2
+008A   081E           00282     MOVF    ADRESH,W
+008B   00??           00283     MOVWF   ADC2
+008C   159F           00284     BSF ADCON0,CHS1
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE  8
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-                      00285     
-0023   300C           00286     MOVLW   B'00001100' 
-0024   0097           00287     MOVWF   CCP1CON ;MODO DE PWM EN P1A LOS DEMAS SON PINES NORMALES 
-0025   009D           00288     MOVWF   CCP2CON ;PWM TAMBIEN
-                      00289     
-0026   3006           00290     MOVLW   B'0000110' ;TMR2 ENCENDIDO CON PRESCALES DE 1:16 Y POST SCALER DE 1 
-0027   0092           00291     MOVWF   T2CON
-                      00292     
-0028   3041           00293     MOVLW   B'01000001' ;ADC CON FOSC/8, CANAL 0 Y ENCENDIDO
-0029   009F           00294     MOVWF   ADCON0
-                      00295     
-002A   01??           00296     CLRF    ADC0
-002B   01??           00297     CLRF    ADC1
-002C   01??           00298     CLRF    ADC2
-002D   01??           00299     CLRF    ADC3
-002E   01??           00300     CLRF    CONTADOR_ADC
-002F   01??           00301     CLRF    FLAGS
-0030   01??           00302     CLRF    SECUENCIA
-0031   01??           00303     CLRF    CONTADOR_TX
+008D   151F           00285     BSF ADCON0,CHS0 ;SE SELECCIONA EL CANAL 3
+008E   2???           00286     GOTO FIN
+                      00287     
+Warning[207]: Found label after column 1. (ES_ADC3)
+008F                  00288     ES_ADC3
+008F   081E           00289     MOVF    ADRESH,W
+0090   00??           00290     MOVWF   ADC3
+0091   119F           00291     BCF ADCON0,CHS1
+0092   111F           00292     BCF ADCON0,CHS0 ;SE SELECCIONA CANAL 0
+                      00293     
+Warning[207]: Found label after column 1. (FIN)
+0093                  00294     FIN
+0093   0A??           00295     INCF    CONTADOR_ADC,F
+0094   149F           00296     BSF ADCON0,GO ;INICIA CONVERSION
+                      00297     
+0095                  00298 LOAD:
+0095   0E??           00299     SWAPF   STATUS_RAM,W
+0096   0083           00300     MOVWF   STATUS
+0097   0E??           00301     SWAPF   W_RAM,F
+0098   0E??           00302     SWAPF   W_RAM,W
+0099   0009           00303     RETFIE
                       00304     
-0032   149F           00305     BSF ADCON0, GO ;INICIA LA CONVERSION
-                      00306     
-0033                  00307 LOOP:
-                      00308     ;SE ENTRA EN ESTA SECCION DEL CODIGO SI FLAGS EN EL BIT 0 ESTA EN 0, INDICANDO QUE ESTA EN
-                      00309     ;MODO MANUAL. 
-0033   30??           00310     MOVLW   ADC0
-0034   0084           00311     MOVWF   FSR ;VALOR DEL ADC PARA EL VALO
-0035   2???           00312      CALL    VALOR_PWM
-0036   08??           00313     MOVF    AJUSTE_PWM,W
-0037   0095           00314     MOVWF   CCPR1L
-                      00315     
-0038   30??           00316     MOVLW    ADC1
-0039   0084           00317     MOVWF   FSR
-003A   2???           00318     CALL    VALOR_PWM
-Message[305]: Using default destination of 1 (file).
-003B   08??           00319     MOVF    AJUSTE_PWM
-003C   009B           00320     MOVWF   CCPR2L
-                      00321     
-003D   30??           00322     MOVLW   ADC2
-003E   0084           00323     MOVWF   FSR
-003F   2???           00324     CALL   VALOR_PWM
-0040   08??           00325     MOVF    AJUSTE_PWM,W
-0041   00??           00326     MOVWF TRABAJO1
-                      00327         
-0042   30??           00328     MOVLW   ADC3
-0043   0084           00329     MOVWF   FSR
-0044   2???           00330     CALL   VALOR_PWM
-0045   08??           00331     MOVF    AJUSTE_PWM,W
-0046   00??           00332     MOVWF TRABAJO2
-                      00333     ;--------------------- AQUI SE CONVIERTE EL VALOR DEL SERVO EN BCD ---------------------------------
-0047   08??           00334     MOVF    ADC0,W
-0048   00??           00335     MOVWF   VALOR_BIN
-0049   2???           00336    CALL CONVERTIR_BIN_TO_BCD
-MPASM 5.84                          MAIN.ASM   11-25-2020  19:24:20         PAGE  9
+009A                  00305 SEND_DATA:
+009A   1E0C           00306     BTFSS   PIR1,TXIF ;SI NO ESTA OCUPADO SE SALTA EL RETURN
+009B   0008           00307     RETURN
+                      00308    
+                      00309     ;----- SE DETERMINA QUE DATO HAY QUE ENVIAR -------------------------------
+009C   08??           00310     MOVF    CONTADOR_TX,W
+009D   0782           00311    ADDWF   PCL,F
+009E   2???           00312     GOTO    UNO
+009F   2???           00313     GOTO    DOS
+00A0   2???           00314     GOTO    TRES
+00A1   2???           00315     GOTO    COMA
+00A2   2???           00316     GOTO    CUATRO
+00A3   2???           00317     GOTO    CINCO
+00A4   2???           00318     GOTO    SEIS
+00A5   2???           00319     GOTO    COMA
+00A6   2???           00320     GOTO    SIETE
+00A7   2???           00321     GOTO    OCHO
+00A8   2???           00322     GOTO    NUEVE
+00A9   2???           00323     GOTO    COMA
+00AA   2???           00324     GOTO    DIEZ
+00AB   2???           00325     GOTO    ONCE
+00AC   2???           00326     GOTO    DOCE
+00AD   2???           00327     GOTO    FINAL
+00AE   01??           00328     CLRF    CONTADOR_TX
+                      00329 
+Warning[207]: Found label after column 1. (UNO)
+00AF                  00330     UNO
+00AF   08??           00331     MOVF    VALOR_CENTENAS_SERVO0,W
+00B0   2???           00332     GOTO ENVIAR
+Warning[207]: Found label after column 1. (DOS)
+00B1                  00333     DOS
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE  9
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-                      00337    
-004A   08??           00338    MOVF VALOR_CENTENAS,W
-004B   00??           00339    MOVWF    VALOR_CENTENAS_SERVO0
-                      00340    
-004C   08??           00341    MOVF VALOR_DECENAS,W
-004D   00??           00342    MOVWF  VALOR_DECENAS_SERVO0
-                      00343    
-004E   08??           00344    MOVF    VALOR_UNIDADES,W
-004F   00??           00345    MOVWF    VALOR_UNIDADES_SERVO0
-                      00346    
-0050   08??           00347    MOVF    ADC1,W
-0051   00??           00348    MOVWF   VALOR_BIN
-0052   2???           00349    CALL CONVERTIR_BIN_TO_BCD
-                      00350    
-0053   08??           00351    MOVF VALOR_CENTENAS,W
-0054   00??           00352    MOVWF    VALOR_CENTENAS_SERVO1
-                      00353    
-0055   08??           00354    MOVF VALOR_DECENAS,W
-0056   00??           00355    MOVWF  VALOR_DECENAS_SERVO1
-                      00356    
-0057   08??           00357    MOVF    VALOR_UNIDADES,W
-0058   00??           00358    MOVWF    VALOR_UNIDADES_SERVO1
-                      00359    
-0059   08??           00360    MOVF    ADC2,W
-005A   00??           00361     MOVWF   VALOR_BIN
-005B   2???           00362    CALL CONVERTIR_BIN_TO_BCD
-                      00363    
-005C   08??           00364    MOVF VALOR_CENTENAS,W
-005D   00??           00365    MOVWF    VALOR_CENTENAS_SERVO2
-                      00366    
-005E   08??           00367    MOVF VALOR_DECENAS,W
-005F   00??           00368    MOVWF  VALOR_DECENAS_SERVO2
-                      00369    
-0060   08??           00370    MOVF    VALOR_UNIDADES,W
-0061   00??           00371    MOVWF    VALOR_UNIDADES_SERVO2
-                      00372    
-0062   08??           00373    MOVF    ADC3,W
-0063   00??           00374     MOVWF   VALOR_BIN
-0064   2???           00375    CALL CONVERTIR_BIN_TO_BCD
-                      00376    
-0065   08??           00377    MOVF VALOR_CENTENAS,W
-0066   00??           00378    MOVWF    VALOR_CENTENAS_SERVO3
-                      00379    
-0067   08??           00380    MOVF VALOR_DECENAS,W
-0068   00??           00381    MOVWF  VALOR_DECENAS_SERVO3
-                      00382    
-0069   08??           00383    MOVF    VALOR_UNIDADES,W
-006A   00??           00384    MOVWF    VALOR_UNIDADES_SERVO3
-                      00385    
-                      00386    
-006B   2???           00387    CALL SEND_DATA
-                      00388    
-006C   2???           00389     GOTO LOOP    
-MPASM 5.84                          MAIN.ASM   11-25-2020  19:24:20         PAGE 10
+00B1   08??           00334     MOVF VALOR_DECENAS_SERVO0,W
+00B2   2???           00335     GOTO ENVIAR
+Warning[207]: Found label after column 1. (TRES)
+00B3                  00336     TRES
+00B3   08??           00337     MOVF VALOR_UNIDADES_SERVO0,W
+00B4   2???           00338     GOTO ENVIAR
+Warning[207]: Found label after column 1. (CUATRO)
+00B5                  00339     CUATRO
+00B5   08??           00340     MOVF    VALOR_CENTENAS_SERVO1,W
+00B6   2???           00341     GOTO ENVIAR
+Warning[207]: Found label after column 1. (CINCO)
+00B7                  00342     CINCO
+00B7   08??           00343     MOVF VALOR_DECENAS_SERVO1,W
+00B8   2???           00344     GOTO ENVIAR
+Warning[207]: Found label after column 1. (SEIS)
+00B9                  00345     SEIS
+00B9   08??           00346     MOVF VALOR_UNIDADES_SERVO1,W
+00BA   2???           00347     GOTO ENVIAR
+Warning[207]: Found label after column 1. (SIETE)
+00BB                  00348     SIETE
+00BB   08??           00349     MOVF    VALOR_CENTENAS_SERVO2,W
+00BC   2???           00350     GOTO ENVIAR
+Warning[207]: Found label after column 1. (OCHO)
+00BD                  00351     OCHO
+00BD   08??           00352     MOVF VALOR_DECENAS_SERVO2,W
+00BE   2???           00353     GOTO ENVIAR
+Warning[207]: Found label after column 1. (NUEVE)
+00BF                  00354     NUEVE
+00BF   08??           00355     MOVF VALOR_UNIDADES_SERVO2,W
+00C0   2???           00356     GOTO ENVIAR
+Warning[207]: Found label after column 1. (DIEZ)
+00C1                  00357     DIEZ
+00C1   08??           00358     MOVF    VALOR_CENTENAS_SERVO3,W
+00C2   2???           00359     GOTO ENVIAR
+Warning[207]: Found label after column 1. (ONCE)
+00C3                  00360     ONCE
+00C3   08??           00361     MOVF VALOR_DECENAS_SERVO3,W
+00C4   2???           00362     GOTO ENVIAR
+Warning[207]: Found label after column 1. (DOCE)
+00C5                  00363     DOCE
+00C5   08??           00364     MOVF VALOR_UNIDADES_SERVO3,W
+00C6   2???           00365     GOTO ENVIAR
+Warning[207]: Found label after column 1. (COMA)
+00C7                  00366     COMA
+00C7   302C           00367     MOVLW   .44 ;COMA EN ASCII
+00C8   2???           00368     GOTO    ENVIAR_SIN_SUMA
+Warning[207]: Found label after column 1. (FINAL)
+00C9                  00369     FINAL
+00C9   300A           00370     MOVLW   .10 ;SALTO DE LINEA
+00CA   2???           00371     GOTO    ENVIAR_SIN_SUMA
+Warning[207]: Found label after column 1. (ENVIAR)
+00CB                  00372     ENVIAR
+00CB   3E30           00373     ADDLW   .48 ;SE PASA DE BCD A ASCII
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE 10
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-                      00390 
-006D                  00391 CONVERTIR_BIN_TO_BCD:
-006D   01??           00392     CLRF    VALOR_CENTENAS
-006E   01??           00393     CLRF    VALOR_DECENAS
-006F   01??           00394     CLRF    VALOR_UNIDADES
-                      00395     ;PRIMERO SE INICIA CON LAS CENTENAS
-Warning[207]: Found label after column 1. (CENTENAS)
-0070                  00396     CENTENAS
-0070   3064           00397     MOVLW   .100
-0071   02??           00398     SUBWF   VALOR_BIN,W    ;EN EL FSR SE COLOCA LA DIRECCION DEL VALOR A CONVERTIR
-0072   1C03           00399     BTFSS   STATUS, C   ; SI EL BIT C ES 1 QUIERE DECIR QUE INDF >= W 
-0073   2???           00400     GOTO    DECENAS ;SI EL BIT ES CERO ES EJECUTA ESTO, LO QUE QUIERE DECIR QUE YA EL NUMEOR EN INDF
-                      00401     ;ES MENOR O IGUAL A 100
+Warning[207]: Found label after column 1. (ENVIAR_SIN_SUMA)
+00CC                  00374     ENVIAR_SIN_SUMA
+00CC   0099           00375     MOVWF   TXREG
+00CD   0A??           00376     INCF    CONTADOR_TX,F
+00CE   0008           00377     RETURN
+                      00378     
+                      00379 MAIN_PROG CODE                      ; let linker place main program
+                      00380  
+Warning[207]: Found label after column 1. (START)
+0000                  00381  START
+0000   1383           00382     BCF STATUS, IRP ;BANCO 2 Y 3 EN EL DIRECCIONAMIENTO INDIRECTO
+0001   1703           00383     BSF STATUS, RP1
+0002   1683           00384     BSF STATUS, RP0 ;BANCO 3
+                      00385     
+0003   300F           00386     MOVLW B'00001111'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0004   0088           00387     MOVWF ANSEL
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0005   0189           00388     CLRF    ANSELH 
+                      00389     
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0006   1281           00390     BCF OPTION_REG, T0CS ;FUENTE DE RELOL FOSC/4
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0007   1181           00391     BCF OPTION_REG, PSA ;PRESCALER ASIGNADO AL TMR0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0008   1101           00392     BCF OPTION_REG, PS2
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0009   1481           00393     BSF OPTION_REG,PS1
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000A   1401           00394     BSF OPTION_REG,PS0 ;PRESCALER DE 1:16 (ESTO PARA QUE LOS VALORES OBTENIDOS EN LA RUTINA
+                      00395                         ;VALOR PWM, TAMBIEN SEAN VALIDOS PARA ESTE TIMER)
+                      00396     
+000B   1303           00397     BCF STATUS,RP1 ;BANCO 1
+000C   30FF           00398     MOVLW   .255
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000D   0085           00399     MOVWF   TRISA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000E   0187           00400     CLRF           TRISC
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000F   0188           00401     CLRF           TRISD
                       00402     
-0074   0A??           00403     INCF    VALOR_CENTENAS,F
-0075   00??           00404     MOVWF   VALOR_BIN
-0076   2???           00405     GOTO CENTENAS ;VUELVE A RESTAR
-                      00406     
-                      00407     
-Warning[207]: Found label after column 1. (DECENAS)
-0077                  00408     DECENAS
-0077   300A           00409     MOVLW   .10
-0078   02??           00410     SUBWF   VALOR_BIN,W
-0079   1C03           00411     BTFSS   STATUS,C  ;LO MISMO QUE CON CENTENAS 
-007A   2???           00412     GOTO UNIDADES
-                      00413     
-007B   0A??           00414     INCF    VALOR_DECENAS,F
-007C   00??           00415     MOVWF   VALOR_BIN
-007D   2???           00416     GOTO DECENAS
-                      00417     
-Warning[207]: Found label after column 1. (UNIDADES)
-007E                  00418     UNIDADES
-007E   3001           00419     MOVLW .1
-007F   02??           00420     SUBWF   VALOR_BIN,W
-0080   1C03           00421     BTFSS   STATUS,C ;MISMA LOGICA QUE ANTERIORMENTE
-0081   0008           00422     RETURN
-                      00423     
-0082   0A??           00424     INCF    VALOR_UNIDADES,F
-0083   00??           00425     MOVWF VALOR_BIN
-0084   2???           00426     GOTO UNIDADES
-                      00427     
-                      00428     
-                      00429     
-0085                  00430 VALOR_PWM:
-                      00431     ;ESTA FUNCION LO QUE REALIZARA ES AJUSTAR EL VALOR QUE SE ENCUENTRA EN LA DIRECCION A LA
-                      00432     ;QUE APUNTA EL REGISTRO SFR A UN VALOR EN EL CUAL EL PWM DE SALIDA TENGA UN ANCHO MINIMO
-                      00433     ;DE 0.5 mS Y UN MAXIMO DE 2.4mS PARA QUE SE PUEDE APROVECHAR TODO EL RANGO DEL SERVOMOTOR
-0085   1383           00434     BCF STATUS, IRP ;DIRECCIONAMIENTO INDIRECTO APUNTANDO A BANCOS 0 Y 1
-                      00435     
-0086   1003           00436     BCF STATUS,C ;SE COLOCA EN 0 BIT C PARA QUE RRF FUNCIONE COMO UN SHIFT 
-0087   0C00           00437     RRF INDF, W ;SE DIVIDE POR 2 EL VALOR QUEDANDO ENTRE UN RANGO DE 0 A 126
-0088   3E1F           00438     ADDLW   .31 ;SE LE SUMA 31 PARA QUE EL RESULTADO QUEDE ENTRE 31 Y 157 LO QUE SE TRADUCE A UN
-                      00439                 ;ANCHO DE PULSO DE ENTRE 0.496 mS y 2.512 mS ABARCANDO LOS ANCHOS NECESARIOS
-MPASM 5.84                          MAIN.ASM   11-25-2020  19:24:20         PAGE 11
+                      00403     
+                      00404     
+                      00405     ;------------- INTERRUPCIONES -------------------------------------------------
+0010   178B           00406     BSF INTCON,GIE 
+0011   170B           00407     BSF INTCON, PEIE
+                      00408   
+                      00409     
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0012   170C           00410     BSF PIE1, ADIE ;INTERRUPCION ADC ACTIVADA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0013   168C           00411     BSF PIE1, RCIE ;INTERRUPCION DE RECEPTOR EUSART
+                      00412     ;---------------------------------------------------------------------------------------
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE 11
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-                      00440                 ;PARA QUE EL SERVOMOTOR FUNCIONEN DE 0 A 180 GRADOS
-0089   00??           00441    MOVWF    AJUSTE_PWM 
-008A   1783           00442    BSF  STATUS, IRP ;SE VUELVE A APUNTAR A LOS BANCOS 2 Y 3 PARA LA EEPROM
-008B   0008           00443    RETURN
+0014   30FF           00413     MOVLW .255 
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0015   0092           00414     MOVWF  PR2 ;PERIODO DE  4.09 mS aproximadamente EN PWM
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0016   019F           00415     CLRF    ADCON1 
+                      00416      ;--------------------  EUSART ----------------------------------------------------
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0017   1318           00417      BCF        TXSTA,TX9
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0018   1698           00418      BSF        TXSTA, TXEN
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0019   1218           00419      BCF        TXSTA, SYNC
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+001A   1518           00420      BSF        TXSTA, BRGH
+                      00421      
+001B   3019           00422       MOVLW   .25 ;9615 DE BAUDRATE
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+001C   0099           00423     MOVWF   SPBRG
+                      00424     
+001D   1283           00425     BCF STATUS,RP0 ;BANCO 0
+                      00426     
+001E   1798           00427     BSF RCSTA, SPEN
+001F   1318           00428     BCF RCSTA, RX9
+0020   1618           00429     BSF RCSTA, CREN
+                      00430 
+                      00431  
+                      00432     ;------------------------- SIGIENTDO CON LAS INTERRUPCIONES -----------------
+                      00433     
+0021   110B           00434     BCF INTCON, T0IF
+0022   0181           00435     CLRF        TMR0
+0023   168B           00436     BSF INTCON, T0IE
+                      00437     
+0024   300C           00438     MOVLW   B'00001100' 
+0025   0097           00439     MOVWF   CCP1CON ;MODO DE PWM EN P1A LOS DEMAS SON PINES NORMALES 
+0026   009D           00440     MOVWF   CCP2CON ;PWM TAMBIEN
+                      00441     
+0027   3006           00442     MOVLW   B'0000110' ;TMR2 ENCENDIDO CON PRESCALES DE 1:16 Y POST SCALER DE 1 
+0028   0092           00443     MOVWF   T2CON
                       00444     
-20D4 3FFF             00445     END
-MPASM 5.84                          MAIN.ASM   11-25-2020  19:24:20         PAGE 12
+0029   3041           00445     MOVLW   B'01000001' ;ADC CON FOSC/8, CANAL 0 Y ENCENDIDO
+002A   009F           00446     MOVWF   ADCON0
+                      00447     
+002B   01??           00448     CLRF    ADC0
+002C   01??           00449     CLRF    ADC1
+002D   01??           00450     CLRF    ADC2
+002E   01??           00451     CLRF    ADC3
+002F   01??           00452     CLRF    CONTADOR_ADC
+0030   01??           00453     CLRF    FLAGS
+0031   01??           00454     CLRF    SECUENCIA
+0032   01??           00455     CLRF    CONTADOR_TX
+0033   01??           00456     CLRF    CONTADOR_RC
+0034   01??           00457     CLRF    SERVO_GUARDAR
+0035   149F           00458     BSF ADCON0, GO ;INICIA LA CONVERSION
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE 12
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00459     
+0036                  00460 LOOP:
+                      00461     ;SE ENTRA EN ESTA SECCION DEL CODIGO SI FLAGS EN EL BIT 0 ESTA EN 0, INDICANDO QUE ESTA EN
+                      00462     ;MODO MANUAL. 
+0036   30??           00463     MOVLW   ADC0
+0037   0084           00464     MOVWF   FSR ;VALOR DEL ADC PARA EL VALO
+0038   2???           00465      CALL    VALOR_PWM
+0039   08??           00466     MOVF    AJUSTE_PWM,W
+003A   0095           00467     MOVWF   CCPR1L
+                      00468     
+003B   30??           00469     MOVLW    ADC1
+003C   0084           00470     MOVWF   FSR
+003D   2???           00471     CALL    VALOR_PWM
+Message[305]: Using default destination of 1 (file).
+003E   08??           00472     MOVF    AJUSTE_PWM
+003F   009B           00473     MOVWF   CCPR2L
+                      00474     
+0040   30??           00475     MOVLW   ADC2
+0041   0084           00476     MOVWF   FSR
+0042   2???           00477     CALL   VALOR_PWM
+0043   08??           00478     MOVF    AJUSTE_PWM,W
+0044   00??           00479     MOVWF TRABAJO1
+                      00480         
+0045   30??           00481     MOVLW   ADC3
+0046   0084           00482     MOVWF   FSR
+0047   2???           00483     CALL   VALOR_PWM
+0048   08??           00484     MOVF    AJUSTE_PWM,W
+0049   00??           00485     MOVWF TRABAJO2
+                      00486     ;--------------------- AQUI SE CONVIERTE EL VALOR DEL SERVO EN BCD ---------------------------------
+                            ---
+004A   08??           00487     MOVF    ADC0,W
+004B   00??           00488     MOVWF   VALOR_BIN
+004C   30??           00489     MOVLW   VALOR_CENTENAS_SERVO0
+004D   0084           00490     MOVWF   FSR
+004E   2???           00491    CALL CONVERTIR_BIN_TO_BCD ;EN ESTA RUTINA SE GUARDAN LOS VALORES 
+                      00492    
+004F   08??           00493     MOVF    ADC1,W
+0050   00??           00494     MOVWF   VALOR_BIN
+0051   30??           00495     MOVLW   VALOR_CENTENAS_SERVO1
+0052   0084           00496     MOVWF   FSR
+0053   2???           00497    CALL CONVERTIR_BIN_TO_BCD ;EN ESTA RUTINA SE GUARDAN LOS VALORES 
+                      00498    
+0054   08??           00499     MOVF    ADC2,W
+0055   00??           00500     MOVWF   VALOR_BIN
+0056   30??           00501     MOVLW   VALOR_CENTENAS_SERVO1
+0057   0084           00502     MOVWF   FSR
+0058   2???           00503    CALL CONVERTIR_BIN_TO_BCD ;EN ESTA RUTINA SE GUARDAN LOS VALORES 
+                      00504    
+0059   08??           00505     MOVF    ADC3,W
+005A   00??           00506     MOVWF   VALOR_BIN
+005B   30??           00507     MOVLW   VALOR_CENTENAS_SERVO3
+005C   0084           00508     MOVWF   FSR
+005D   2???           00509    CALL CONVERTIR_BIN_TO_BCD ;EN ESTA RUTINA SE GUARDAN LOS VALORES 
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE 13
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00510    
+                      00511    
+005E   2???           00512    CALL SEND_DATA
+                      00513    
+005F   2???           00514     GOTO LOOP    
+                      00515 
+0060                  00516 CONVERTIR_BIN_TO_BCD:
+0060   01??           00517     CLRF    VALOR_CENTENAS
+0061   01??           00518     CLRF    VALOR_DECENAS
+0062   01??           00519     CLRF    VALOR_UNIDADES
+                      00520     ;PRIMERO SE INICIA CON LAS CENTENAS
+Warning[207]: Found label after column 1. (CENTENAS)
+0063                  00521     CENTENAS
+0063   3064           00522     MOVLW   .100
+0064   02??           00523     SUBWF   VALOR_BIN,W    ;EN EL FSR SE COLOCA LA DIRECCION DEL VALOR A CONVERTIR
+0065   1C03           00524     BTFSS   STATUS, C   ; SI EL BIT C ES 1 QUIERE DECIR QUE INDF >= W 
+0066   2???           00525     GOTO    DECENAS ;SI EL BIT ES CERO ES EJECUTA ESTO, LO QUE QUIERE DECIR QUE YA EL NUMEOR EN INDF
+                      00526     ;ES MENOR O IGUAL A 100
+                      00527     
+0067   0A??           00528     INCF    VALOR_CENTENAS,F
+0068   00??           00529     MOVWF   VALOR_BIN
+0069   2???           00530     GOTO CENTENAS ;VUELVE A RESTAR
+                      00531     
+                      00532     
+Warning[207]: Found label after column 1. (DECENAS)
+006A                  00533     DECENAS
+006A   300A           00534     MOVLW   .10
+006B   02??           00535     SUBWF   VALOR_BIN,W
+006C   1C03           00536     BTFSS   STATUS,C  ;LO MISMO QUE CON CENTENAS 
+006D   2???           00537     GOTO UNIDADES
+                      00538     
+006E   0A??           00539     INCF    VALOR_DECENAS,F
+006F   00??           00540     MOVWF   VALOR_BIN
+0070   2???           00541     GOTO DECENAS
+                      00542     
+Warning[207]: Found label after column 1. (UNIDADES)
+0071                  00543     UNIDADES
+0071   3001           00544     MOVLW .1
+0072   02??           00545     SUBWF   VALOR_BIN,W
+0073   1C03           00546     BTFSS   STATUS,C ;MISMA LOGICA QUE ANTERIORMENTE
+0074   2???           00547     GOTO    GUARDAR
+                      00548     
+0075   0A??           00549     INCF    VALOR_UNIDADES,F
+0076   00??           00550     MOVWF VALOR_BIN
+0077   2???           00551     GOTO UNIDADES
+Warning[207]: Found label after column 1. (GUARDAR)
+0078                  00552     GUARDAR
+0078   08??           00553     MOVF    VALOR_CENTENAS,W ;SE VAN RECORRIENDO LOS VALORES 
+0079   0080           00554     MOVWF   INDF
+                      00555     
+007A   0A84           00556     INCF    FSR,F
+007B   08??           00557     MOVF    VALOR_DECENAS,W
+007C   0080           00558     MOVWF   INDF
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE 14
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00559     
+007D   0A84           00560     INCF    FSR,F
+007E   08??           00561     MOVF   VALOR_UNIDADES,W
+007F   0080           00562     MOVWF   INDF
+0080   0008           00563     RETURN
+                      00564     
+                      00565     
+0081                  00566 VALOR_PWM:
+                      00567     ;ESTA FUNCION LO QUE REALIZARA ES AJUSTAR EL VALOR QUE SE ENCUENTRA EN LA DIRECCION A LA
+                      00568     ;QUE APUNTA EL REGISTRO SFR A UN VALOR EN EL CUAL EL PWM DE SALIDA TENGA UN ANCHO MINIMO
+                      00569     ;DE 0.5 mS Y UN MAXIMO DE 2.4mS PARA QUE SE PUEDE APROVECHAR TODO EL RANGO DEL SERVOMOTOR
+0081   1383           00570     BCF STATUS, IRP ;DIRECCIONAMIENTO INDIRECTO APUNTANDO A BANCOS 0 Y 1
+                      00571     
+0082   1003           00572     BCF STATUS,C ;SE COLOCA EN 0 BIT C PARA QUE RRF FUNCIONE COMO UN SHIFT 
+0083   0C00           00573     RRF INDF, W ;SE DIVIDE POR 2 EL VALOR QUEDANDO ENTRE UN RANGO DE 0 A 126
+0084   3E1F           00574     ADDLW   .31 ;SE LE SUMA 31 PARA QUE EL RESULTADO QUEDE ENTRE 31 Y 157 LO QUE SE TRADUCE A UN
+                      00575                 ;ANCHO DE PULSO DE ENTRE 0.496 mS y 2.512 mS ABARCANDO LOS ANCHOS NECESARIOS
+                      00576                 ;PARA QUE EL SERVOMOTOR FUNCIONEN DE 0 A 180 GRADOS
+0085   00??           00577    MOVWF    AJUSTE_PWM 
+0086   1783           00578    BSF  STATUS, IRP ;SE VUELVE A APUNTAR A LOS BANCOS 2 Y 3 PARA LA EEPROM
+0087   0008           00579    RETURN
+                      00580     
+20D4 3FFF             00581     END
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE 15
 
 
 SYMBOL TABLE
@@ -659,7 +853,7 @@ BRG16                             00000003
 BRG2                              00000002
 BRG3                              00000003
 BRG4                              00000004
-MPASM 5.84                          MAIN.ASM   11-25-2020  19:24:20         PAGE 13
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE 16
 
 
 SYMBOL TABLE
@@ -718,32 +912,33 @@ CCPR1H                            00000016
 CCPR1L                            00000015
 CCPR2                             0000001B
 CCPR2H                            0000001C
-MPASM 5.84                          MAIN.ASM   11-25-2020  19:24:20         PAGE 14
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE 17
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
 CCPR2L                            0000001B
-CENTENAS                          00000070
+CENTENAS                          00000063
 CHS0                              00000002
 CHS1                              00000003
 CHS2                              00000004
 CHS3                              00000005
-CINCO                             00000062
+CINCO                             000000B7
 CKE                               00000006
 CKP                               00000004
 CM1CON0                           00000107
 CM2CON0                           00000108
 CM2CON1                           00000109
-COMA                              00000072
+COMA                              000000C7
 CONTADOR_ADC                      00000004
 CONTADOR_PWM                      00000008
+CONTADOR_RC                       0000000E
 CONTADOR_TX                       0000000D
-CONVERTIR_BIN_TO_BCD              0000006D
+CONVERTIR_BIN_TO_BCD              00000060
 CREN                              00000004
 CSRC                              00000007
-CUATRO                            00000060
+CUATRO                            000000B5
 D                                 00000005
 DATA_ADDRESS                      00000005
 DC                                00000001
@@ -751,10 +946,10 @@ DC1B0                             00000004
 DC1B1                             00000005
 DC2B0                             00000004
 DC2B1                             00000005
-DECENAS                           00000077
-DIEZ                              0000006C
-DOCE                              00000070
-DOS                               0000005C
+DECENAS                           0000006A
+DIEZ                              000000C1
+DOCE                              000000C5
+DOS                               000000B1
 D_A                               00000005
 D_NOT_A                           00000005
 ECCPAS                            0000009C
@@ -772,22 +967,23 @@ EEDATH                            0000010E
 EEIE                              00000004
 EEIF                              00000004
 EEPGD                             00000007
-ENVIAR                            00000076
-ENVIAR_SIN_SUMA                   00000077
-ES_ADC0                           0000002B
-ES_ADC1                           00000030
-ES_ADC2                           00000035
-MPASM 5.84                          MAIN.ASM   11-25-2020  19:24:20         PAGE 15
+ENVIAR                            000000CB
+ENVIAR_SIN_SUMA                   000000CC
+ES_ADC0                           00000080
+ES_ADC1                           00000085
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE 18
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
-ES_ADC3                           0000003A
+ES_ADC2                           0000008A
+ES_ADC3                           0000008F
 F                                 00000001
 FERR                              00000002
-FIN                               0000003E
-FINAL                             00000074
+FIN                               00000093
+FINAL                             000000C9
+FIN_VALOR                         00000052
 FLAGS                             00000005
 FSR                               00000004
 FVREN                             00000000
@@ -796,6 +992,7 @@ GIE                               00000007
 GO                                00000001
 GO_DONE                           00000001
 GO_NOT_DONE                       00000001
+GUARDAR                           00000078
 HTS                               00000002
 I2C_DATA                          00000005
 I2C_READ                          00000002
@@ -807,7 +1004,8 @@ INTCON                            0000000B
 INTE                              00000004
 INTEDG                            00000006
 INTF                              00000001
-INT_ADC                           00000021
+INT_ADC                           00000076
+INT_RX                            00000021
 INT_TMR0                          00000007
 IOCB                              00000096
 IOCB0                             00000000
@@ -822,8 +1020,8 @@ IRCF0                             00000004
 IRCF1                             00000005
 IRCF2                             00000006
 IRP                               00000007
-LOAD                              00000040
-LOOP                              00000033
+LOAD                              00000095
+LOOP                              00000036
 LTS                               00000001
 MC1OUT                            00000007
 MC2OUT                            00000006
@@ -832,16 +1030,16 @@ MSK0                              00000000
 MSK1                              00000001
 MSK2                              00000002
 MSK3                              00000003
-MSK4                              00000004
-MSK5                              00000005
-MSK6                              00000006
-MSK7                              00000007
-MPASM 5.84                          MAIN.ASM   11-25-2020  19:24:20         PAGE 16
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE 19
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+MSK4                              00000004
+MSK5                              00000005
+MSK6                              00000006
+MSK7                              00000007
 NOT_A                             00000005
 NOT_ADDRESS                       00000005
 NOT_BO                            00000000
@@ -856,10 +1054,11 @@ NOT_TO                            00000004
 NOT_TX8                           00000006
 NOT_W                             00000002
 NOT_WRITE                         00000002
-NUEVE                             0000006A
-OCHO                              00000068
+NO_SERVO                          00000075
+NUEVE                             000000BF
+OCHO                              000000BD
 OERR                              00000001
-ONCE                              0000006E
+ONCE                              000000C3
 OPTION_REG                        00000081
 OSCCON                            0000008F
 OSCTUNE                           00000090
@@ -890,17 +1089,17 @@ PORTA                             00000005
 PORTB                             00000006
 PORTC                             00000007
 PORTD                             00000008
-PORTE                             00000009
-PR2                               00000092
-PRSEN                             00000007
-PS0                               00000000
-PS1                               00000001
-MPASM 5.84                          MAIN.ASM   11-25-2020  19:24:20         PAGE 17
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE 20
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+PORTE                             00000009
+PR2                               00000092
+PRSEN                             00000007
+PS0                               00000000
+PS1                               00000001
 PS2                               00000002
 PSA                               00000003
 PSSAC0                            00000002
@@ -949,17 +1148,18 @@ RCIE                              00000005
 RCIF                              00000005
 RCREG                             0000001A
 RCSTA                             00000018
-RD                                00000000
-RD0                               00000000
-RD1                               00000001
-RD2                               00000002
-RD3                               00000003
-MPASM 5.84                          MAIN.ASM   11-25-2020  19:24:20         PAGE 18
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE 21
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+RC_AUX                            0000001C
+RD                                00000000
+RD0                               00000000
+RD1                               00000001
+RD2                               00000002
+RD3                               00000003
 RD4                               00000004
 RD5                               00000005
 RD6                               00000006
@@ -982,15 +1182,37 @@ SBOREN                            00000004
 SCKP                              00000004
 SCS                               00000000
 SECUENCIA                         0000000C
-SEIS                              00000064
+SEIS                              000000B9
 SEN                               00000000
 SENDB                             00000003
-SEND_DATA                         00000045
-SIETE                             00000066
+SEND_DATA                         0000009A
+SERVO0_CENTENAS_RX                0000000F
+SERVO0_DECENAS_RX                 00000010
+SERVO0_UNIDADES_RX                00000011
+SERVO1                            00000060
+SERVO1_CENTENAS_RX                00000012
+SERVO1_DECENAS_RX                 00000013
+SERVO1_UNIDADES_RX                00000014
+SERVO2                            00000067
+SERVO2_CENTENAS_RX                00000015
+SERVO2_DECENAS_RX                 00000016
+SERVO2_UNIDADES_RX                00000017
+SERVO3                            0000006E
+SERVO3_CENTENAS_RX                00000018
+SERVO3_DECENAS_RX                 00000019
+SERVO3_UNIDADES_RX                0000001A
+SERVO_GUARDAR                     0000001B
+SIETE                             000000BB
 SMP                               00000007
 SPBRG                             00000099
 SPBRGH                            0000009A
 SPEN                              00000007
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE 22
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
 SR0                               00000006
 SR1                               00000007
 SRCON                             00000185
@@ -1013,12 +1235,6 @@ START                             00000000
 STATUS                            00000003
 STATUS_RAM                        00000007
 STRA                              00000000
-MPASM 5.84                          MAIN.ASM   11-25-2020  19:24:20         PAGE 19
-
-
-SYMBOL TABLE
-  LABEL                             VALUE 
-
 STRB                              00000001
 STRC                              00000002
 STRD                              00000003
@@ -1050,6 +1266,12 @@ TMR1GE                            00000006
 TMR1H                             0000000F
 TMR1IE                            00000000
 TMR1IF                            00000000
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE 23
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
 TMR1L                             0000000E
 TMR1ON                            00000000
 TMR2                              00000011
@@ -1062,7 +1284,7 @@ TOUTPS2                           00000005
 TOUTPS3                           00000006
 TRABAJO1                          0000000A
 TRABAJO2                          0000000B
-TRES                              0000005E
+TRES                              000000B3
 TRISA                             00000085
 TRISA0                            00000000
 TRISA1                            00000001
@@ -1072,12 +1294,6 @@ TRISA4                            00000004
 TRISA5                            00000005
 TRISA6                            00000006
 TRISA7                            00000007
-MPASM 5.84                          MAIN.ASM   11-25-2020  19:24:20         PAGE 20
-
-
-SYMBOL TABLE
-  LABEL                             VALUE 
-
 TRISB                             00000086
 TRISB0                            00000000
 TRISB1                            00000001
@@ -1109,6 +1325,12 @@ TRISE                             00000089
 TRISE0                            00000000
 TRISE1                            00000001
 TRISE2                            00000002
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE 24
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
 TRISE3                            00000003
 TRMT                              00000001
 TUN0                              00000000
@@ -1129,40 +1351,45 @@ UA                                00000001
 ULPWUE                            00000005
 ULPWUIE                           00000002
 ULPWUIF                           00000002
-UNIDADES                          0000007E
-UNO                               0000005A
-MPASM 5.84                          MAIN.ASM   11-25-2020  19:24:20         PAGE 21
-
-
-SYMBOL TABLE
-  LABEL                             VALUE 
-
+UNIDADES                          00000071
+UNO                               000000AF
+VALOR0                            0000002F
+VALOR1                            00000038
+VALOR2                            00000041
+VALOR3                            0000004A
 VALORTMR0                         000000D8
-VALOR_BIN                         0000000E
-VALOR_CENTENAS                    0000000F
-VALOR_CENTENAS_SERVO0             00000012
-VALOR_CENTENAS_SERVO1             0000001B
-VALOR_CENTENAS_SERVO2             00000015
-VALOR_CENTENAS_SERVO3             00000018
-VALOR_DECENAS                     00000010
-VALOR_DECENAS_SERVO0              00000013
-VALOR_DECENAS_SERVO1              0000001C
-VALOR_DECENAS_SERVO2              00000016
-VALOR_DECENAS_SERVO3              00000019
-VALOR_PWM                         00000085
-VALOR_UNIDADES                    00000011
-VALOR_UNIDADES_SERVO0             00000014
-VALOR_UNIDADES_SERVO1             0000001D
-VALOR_UNIDADES_SERVO2             00000017
-VALOR_UNIDADES_SERVO3             0000001A
+VALOR_BIN                         00000029
+VALOR_CENTENAS                    0000002A
+VALOR_CENTENAS_SERVO0             0000001D
+VALOR_CENTENAS_SERVO1             00000026
+VALOR_CENTENAS_SERVO2             00000020
+VALOR_CENTENAS_SERVO3             00000023
+VALOR_DECENAS                     0000002B
+VALOR_DECENAS_SERVO0              0000001E
+VALOR_DECENAS_SERVO1              00000027
+VALOR_DECENAS_SERVO2              00000021
+VALOR_DECENAS_SERVO3              00000024
+VALOR_PWM                         00000081
+VALOR_UNIDADES                    0000002C
+VALOR_UNIDADES_SERVO0             0000001F
+VALOR_UNIDADES_SERVO1             00000028
+VALOR_UNIDADES_SERVO2             00000022
+VALOR_UNIDADES_SERVO3             00000025
 VCFG0                             00000004
 VCFG1                             00000005
+VER_VALOR                         00000059
 VR0                               00000000
 VR1                               00000001
 VR2                               00000002
 VR3                               00000003
 VRCON                             00000097
 VREN                              00000007
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE 25
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
 VROE                              00000006
 VRR                               00000005
 VRSS                              00000004
@@ -1190,12 +1417,6 @@ W_RAM                             00000006
 Z                                 00000002
 _BOR21V                           00003EFF
 _BOR40V                           00003FFF
-MPASM 5.84                          MAIN.ASM   11-25-2020  19:24:20         PAGE 22
-
-
-SYMBOL TABLE
-  LABEL                             VALUE 
-
 _BOR4V_BOR21V                     00003EFF
 _BOR4V_BOR40V                     00003FFF
 _BOREN_NSLEEP                     00003EFF
@@ -1222,6 +1443,12 @@ _EXTRC_OSC_CLKOUT                 00003FFF
 _EXTRC_OSC_NOCLKOUT               00003FFE
 _FCMEN_OFF                        000037FF
 _FCMEN_ON                         00003FFF
+MPASM 5.84                          MAIN.ASM   11-26-2020  12:18:27         PAGE 26
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
 _FOSC_EC                          00003FFB
 _FOSC_EXTRC_CLKOUT                00003FFF
 _FOSC_EXTRC_NOCLKOUT              00003FFE
@@ -1249,12 +1476,6 @@ _MCLRE_ON                         00003FFF
 _PWRTE_OFF                        00003FFF
 _PWRTE_ON                         00003FEF
 _WDTE_OFF                         00003FF7
-MPASM 5.84                          MAIN.ASM   11-25-2020  19:24:20         PAGE 23
-
-
-SYMBOL TABLE
-  LABEL                             VALUE 
-
 _WDTE_ON                          00003FFF
 _WDT_OFF                          00003FF7
 _WDT_ON                           00003FFF
@@ -1268,7 +1489,7 @@ __DEBUG
 __MPLAB_DEBUGGER_SIMULATOR        1
 
 Errors   :     0
-Warnings :    61 reported,     0 suppressed
-Messages :    19 reported,     0 suppressed
+Warnings :    87 reported,     0 suppressed
+Messages :    20 reported,     0 suppressed
 
 

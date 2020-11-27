@@ -157,7 +157,7 @@ INT_RX:
     MOVWF   RC_AUX
     
     MOVF    SERVO_GUARDAR,W
-    SUBLW .0	; SI Z ES 1 SIGNIFICA QUE SERVO_GUARDAR = 0 CON LO QUE EL DATO ANTERIOR
+    SUBLW .255	; SI Z ES 1 SIGNIFICA QUE SERVO_GUARDAR = 0 CON LO QUE EL DATO ANTERIOR
     BTFSC   STATUS, Z ; NO FUE NI A,B,C NI D, CON LO QUE EL DATO RECIBIDO EN ESTA OCACION NO INDICA
     GOTO    VER_VALOR; UN VALOR PARA EL PWM
     ;---------- SE EJECUTA AQUI SI  Z ES CERO -----------------------------------------
@@ -220,8 +220,9 @@ INT_RX:
     BTFSS   STATUS,Z ;SI CONTADOR_RC ES 3 NTONCES SE SALTA LA INSTRUCCION
     GOTO    INT_ADC
     ;--------------- SE EJECUTA AQUI SI CONTAODOR_RC ES 3 --------------
+    MOVLW .255
     CLRF    CONTADOR_RC
-    CLRF    SERVO_GUARDAR ;SE ACABA LA INSTRUCCION A LA ESPERA DE UNA NUEVA
+    MOVWF    SERVO_GUARDAR ;SE ACABA LA INSTRUCCION A LA ESPERA DE UNA NUEVA
     GOTO   INT_ADC
     ;------------------------------------------------------------------------------------------------
     VER_VALOR
@@ -230,7 +231,7 @@ INT_RX:
     BTFSS STATUS, Z; SI LO ANTERIOR DA CERO NO SE SALTA
     GOTO  SERVO1
     ;-------- SE ES A SE EJECUTA AQUI--------------
-    MOVLW   .1 ;VALOR QUE SE USARA PARA UN LOOK UP TABLE MAS ADELANTE
+    MOVLW   .0 ;VALOR QUE SE USARA PARA UN LOOK UP TABLE MAS ADELANTE
     MOVWF SERVO_GUARDAR	
     GOTO INT_ADC ;SE SALE
     
@@ -240,7 +241,7 @@ INT_RX:
     BTFSS   STATUS,Z
     GOTO SERVO2
     ;-------- SI ES B SE EJECUTA AQUI--------------
-    MOVLW .2 ; LO MISMO QUE ANTES
+    MOVLW .1 ; LO MISMO QUE ANTES
     MOVWF   SERVO_GUARDAR
     GOTO    INT_ADC ; SE ESPERA A LA SIGUIENTE
     ;------------------------------------------------------------
@@ -250,7 +251,7 @@ INT_RX:
     BTFSS   STATUS,Z
     GOTO    SERVO3
     ;--------------- SI ES C SE EJECUTA AQUI -----------
-    MOVLW .3
+    MOVLW .2
     MOVWF   SERVO_GUARDAR ;LO MISMO
     GOTO INT_ADC; SE ESPERA A QUE EL SIGUIENTE DATO ENTRE
     ;--------------------------------------------------------------
@@ -260,12 +261,13 @@ INT_RX:
     BTFSS   STATUS,Z
     GOTO NO_SERVO
     ;---------- SI ES D SE EJECUTA AQUI -------------------
-    MOVLW .4
+    MOVLW .3
     MOVWF   SERVO_GUARDAR
     GOTO INT_ADC
     ;------------------------------------------------------------------
     NO_SERVO
-    CLRF    SERVO_GUARDAR ;0 , SE AMPLIARA PARA FUTURAS MEJORAS
+    MOVLW    .255
+    MOVWF   SERVO_GUARDAR    ;0 , SE AMPLIARA PARA FUTURAS MEJORAS
     
     
 INT_ADC:

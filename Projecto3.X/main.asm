@@ -15,7 +15,8 @@
  
  VALORTMR0 EQU .216
  PERIODO    EQU .125
- 
+ T1H	EQU H'0B'
+T1L	EQU H'DC'
  VARS UDATA
  ;-------------------- USO DEL ADC -----------------------------------------------------------------------------------------------
  ADC0 RES 1
@@ -106,7 +107,8 @@ PWM3 RES 1
  EEPROM_READ RES 1
  DIR_EEPROM RES 1
  VALOR_EEPROM RES 1
- 
+ ;--------- MAS CONTADORES ------
+ CONTADOR_TMR1 RES 1
  
 RES_VECT  CODE    0x0000            ; processor reset vector
     GOTO    START                   ; go to beginning of program
@@ -123,7 +125,7 @@ SAVE:
 
 INT_TMR0:
     BTFSS   INTCON,T0IF
-    GOTO    INT_RX
+    GOTO    INT_TMR1
     
     BCF	INTCON,T0IF
     MOVF    SECUENCIA,W
@@ -155,7 +157,51 @@ INT_TMR0:
     BCF	PORTC,RC3
     CLRF	TMR0 ;LA SIGUIENTE INTERRUPCION OCURRIRA DENTRO DE 4.09mS
     INCF SECUENCIA,F
-
+INT_TMR1:
+    BTFSS   PIR1, TMR1IF
+    GOTO    INT_RX
+    
+    BCF	PIR1, TMR1IF
+    
+    DECFSZ  CONTADOR_TMR1, F
+    GOTO    FINAL_TMR1
+    
+    MOVF    DIR_EEPROM,W
+    SUBWF   DIR_LECTURA,W
+    BTFSS   STATUS, C
+    GOTO    CARGA_VALORES_EEPROM
+    MOVLW   .255
+    MOVWF    DIR_LECTURA
+    CARGA_VALORES_EEPROM
+    INCF    DIR_LECTURA, F
+    CALL    LECTURA
+    MOVF    EEPROM_READ,W
+    MOVWF   PWM0
+    
+    INCF    DIR_LECTURA, F
+    CALL    LECTURA
+    MOVF    EEPROM_READ,W
+    MOVWF   PWM1
+    
+    INCF    DIR_LECTURA, F
+    CALL    LECTURA
+    MOVF    EEPROM_READ,W
+    MOVWF   PWM2
+    
+    INCF    DIR_LECTURA, F
+    CALL    LECTURA
+    MOVF    EEPROM_READ,W
+    MOVWF   PWM3
+    
+    MOVLW   .2
+    MOVWF   CONTADOR_TMR1
+    
+    FINAL_TMR1
+    MOVLW   T1H
+    MOVWF   TMR1H
+    MOVLW   T1L
+    MOVWF   TMR1L
+    
 INT_RX:
     BTFSS   PIR1, RCIF
     GOTO    INT_ADC
@@ -275,10 +321,39 @@ INT_RX:
     VER_GUARDAR
     MOVF    RC_AUX, W
     SUBLW   .71 ;SE VERIFICA SI ES G
-    BTFSC   STATUS, Z
+    BTFSS   STATUS, Z
+    GOTO    ERASE
     ;------------ SI ES G SE EJECUTA AQUI ----------------
     BSF	FLAGS, 0 ; SE INDICA QUE LA POSICION ACTUAL SE GUARDA
     COMF    PORTB,F
+    ERASE
+    MOVF    RC_AUX,W
+    SUBLW .69 ;E
+    BTFSS   STATUS, Z
+    GOTO    NLOG
+    MOVLW .255
+    MOVWF DIR_EEPROM
+    NLOG
+    MOVF    RC_AUX,W
+    SUBLW .78 ;MODO ANALOGICO
+    BTFSS   STATUS, Z
+    GOTO    COMPUTER
+    MOVLW .1
+    MOVWF OPCION
+    COMPUTER 
+    MOVF    RC_AUX,W
+    SUBLW .80 ;MODO ANALOGICO
+    BTFSS   STATUS, Z
+    GOTO    SECU
+    MOVLW .2
+    MOVWF OPCION
+    SECU
+    MOVF    RC_AUX,W
+    SUBLW .83 ;MODO ANALOGICO
+    BTFSS   STATUS, Z
+    GOTO    NO_SERVO
+    MOVLW .4
+    MOVWF OPCION
     NO_SERVO
     MOVLW    .255
     MOVWF   SERVO_GUARDAR    ;0 , SE AMPLIARA PARA FUTURAS MEJORAS
@@ -443,6 +518,7 @@ MAIN_PROG CODE                      ; let linker place main program
     
     BSF	PIE1, ADIE ;INTERRUPCION ADC ACTIVADA
     BSF	PIE1, RCIE ;INTERRUPCION DE RECEPTOR EUSART
+    BSF	PIE1, TMR1IE
     ;---------------------------------------------------------------------------------------
     MOVLW .255 
     MOVWF  PR2 ;PERIODO DE  4.09 mS aproximadamente EN PWM
@@ -468,7 +544,17 @@ MAIN_PROG CODE                      ; let linker place main program
     BCF	INTCON, T0IF
     CLRF	TMR0
     BSF	INTCON, T0IE
-    
+    ;------- TMR1 CONF -------------------------------------------------------------------------
+    BCF	T1CON, TMR1GE
+    BSF	T1CON, 5
+    BSF	T1CON, 4 ;PRESCALER DE 1>8
+   BCF	T1CON, TMR1CS
+   
+   MOVLW    T1H
+   MOVWF    TMR1H
+   MOVLW    T1L
+   MOVWF    TMR1L
+   
     MOVLW   B'00001100' 
     MOVWF   CCP1CON ;MODO DE PWM EN P1A LOS DEMAS SON PINES NORMALES 
     MOVWF   CCP2CON ;PWM TAMBIEN
@@ -507,6 +593,8 @@ MAIN_PROG CODE                      ; let linker place main program
     MOVLW   .255
     MOVWF   DIR_EEPROM
     MOVWF   DIR_LECTURA ;PARA QUE AL INCREMENTAR SEA 0
+    MOVLW   .2
+    MOVWF   CONTADOR_TMR1
     CLRF    FLAGS
     BSF	ADCON0, GO ;INICIA LA CONVERSION
     
@@ -535,6 +623,11 @@ LOOP:
     MOVWF   OPCION
     
     SA
+    BTFSS   PORTA_ANTERIOR, 5
+    GOTO SB
+    BTFSS   PORTA_ACTUAL, 5
+    BSF	FLAGS,0 ;SE GUARDA EL VALOR EN LA EEPROM
+    SB
     ;BCF	PIE1, ADIE
     BTFSC   OPCION, 0
     GOTO    ANALOGICO
@@ -547,7 +640,7 @@ LOOP:
     ANALOGICO
     CLRF    PORTB
     BSF	PORTB,7
-    
+    BCF	T1CON, TMR1ON ;SE APAGA
     MOVF    ADC0,W
     MOVWF   PWM0
     MOVF    ADC1,W
@@ -561,7 +654,7 @@ LOOP:
     COMPUTADORA 
     CLRF    PORTB
     BSF	PORTB,6
-    
+    BCF	T1CON, TMR1ON ;SE APAGA
      ;--------------------- SE CONVIERTE EL BCD A BIN ---------------------------------------------------------------
     MOVLW SERVO0_CENTENAS_RX
     MOVWF   FSR
@@ -596,39 +689,16 @@ LOOP:
     MOVF    BIN_SERVO3,W
     MOVWF PWM3
    
+     
     GOTO    CONVERSION
     SECUENCIADO
     CLRF    PORTB
     BSF	PORTB, RB5
     
-    MOVF    DIR_EEPROM,W
-    SUBWF   DIR_LECTURA,W
-    BTFSS   STATUS, Z
-    GOTO    CARGA_VALORES_EEPROM
-    MOVLW   .255
-    MOVWF    DIR_LECTURA
-    CARGA_VALORES_EEPROM
-    INCF    DIR_LECTURA, F
-    CALL    LECTURA
-    MOVF    EEPROM_READ,W
-    MOVWF   PWM0
+    BSF	T1CON, TMR1ON ;SE ENCIENDE
+   
     
-    INCF    DIR_LECTURA, F
-    CALL    LECTURA
-    MOVF    EEPROM_READ,W
-    MOVWF   PWM1
-    
-    INCF    DIR_LECTURA, F
-    CALL    LECTURA
-    MOVF    EEPROM_READ,W
-    MOVWF   PWM2
-    
-    INCF    DIR_LECTURA, F
-    CALL    LECTURA
-    MOVF    EEPROM_READ,W
-    MOVWF   PWM3
-    
-    CALL DELAY_MEDIO
+    ;;CALL DELAY_MEDIO
     ;;CALL DELAY_MEDIO
     
     

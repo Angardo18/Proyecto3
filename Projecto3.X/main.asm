@@ -15,14 +15,15 @@
  
  VALORTMR0 EQU .216
  PERIODO    EQU .125
- T1H	EQU H'0B'
-T1L	EQU H'DC'
+ T1H	EQU H'F6'
+T1L	EQU H'3C'
  VARS UDATA
  ;-------------------- USO DEL ADC -----------------------------------------------------------------------------------------------
  ADC0 RES 1
  ADC1 RES 1
  ADC2 RES 1
  ADC3 RES 1  ;EN ESTAS VARIABLES SE ALMACENA EL VALOR DE LOS CANALES 0-3 DEL ADC
+ ADC4 RES 1 ;VALOR QUE SE USA PARA EL CONTADOR DEL 
  CONTADOR_ADC RES 1 ;CONTADOR QUE INDICA QUE CANAL SE ESTA LEYENDO
  ;------------------------------------------------------------------------------------------------------------------------------------
  ;------------------------------- CONTROL DE EJECUCION -------------------------------------------------------------------
@@ -31,8 +32,8 @@ T1L	EQU H'DC'
 	;BIT 1: INDICA QUE SE QUIERE REINICIAR LA EEPROM (NO SE BORRA SOLO SE COMIENZA EN 0 DE NUEVO)
  DELAYMS RES 1
  DELAY2	RES 1
- PORTA_ANTERIOR RES 1
- PORTA_ACTUAL RES 1
+ PORTE_ANTERIOR RES 1
+ PORTE_ACTUAL RES 1
  ;-------------------------------------------------------------------------------------------------------------------------------------
  ;---------------------------------------- GUARDADO DEL AMBIENTE EN INTERRUPCION ------------------------------
  W_RAM RES 1
@@ -192,8 +193,7 @@ INT_TMR1:
     CALL    LECTURA
     MOVF    EEPROM_READ,W
     MOVWF   PWM3
-    
-    MOVLW   .2
+    INCF    ADC4 , W
     MOVWF   CONTADOR_TMR1
     
     FINAL_TMR1
@@ -370,6 +370,7 @@ INT_ADC:
     GOTO    ES_ADC1
     GOTO    ES_ADC2
     GOTO    ES_ADC3
+    GOTO    ES_ADC4
     CLRF    CONTADOR_ADC
     ES_ADC0
     MOVF    ADRESH, W
@@ -395,8 +396,14 @@ INT_ADC:
     ES_ADC3
     MOVF    ADRESH,W
     MOVWF   ADC3
+    BSF	ADCON0,CHS1
+    BSF	ADCON0,CHS0 ;SE SELECCIONA CANAL 4
+    GOTO    FIN
+    ES_ADC4
+    MOVF    ADRESH, W
+    MOVWF   ADC4
     BCF	ADCON0,CHS1
-    BCF	ADCON0,CHS0 ;SE SELECCIONA CANAL 0
+    BCF	ADCON0, CHS0 ;SE SELECCIONA CANAL 0
     
     FIN
     INCF    CONTADOR_ADC,F
@@ -492,7 +499,7 @@ MAIN_PROG CODE                      ; let linker place main program
     BSF	STATUS, RP1
     BSF	STATUS, RP0 ;BANCO 3
     
-    MOVLW B'00001111'
+    MOVLW B'00011111'
     MOVWF ANSEL
     CLRF    ANSELH 
     
@@ -506,6 +513,8 @@ MAIN_PROG CODE                      ; let linker place main program
     BCF	STATUS,RP1 ;BANCO 1
     MOVLW   .255
     MOVWF   TRISA
+    MOVWF   TRISE
+    MOVWF   TRISD
     CLRF	   TRISC
     CLRF	   TRISB
     
@@ -599,16 +608,16 @@ MAIN_PROG CODE                      ; let linker place main program
     BSF	ADCON0, GO ;INICIA LA CONVERSION
     
 LOOP:
-    MOVF    PORTA_ACTUAL,W
-    MOVWF   PORTA_ANTERIOR
+    MOVF    PORTE_ACTUAL,W
+    MOVWF   PORTE_ANTERIOR
     CALL    DELAY
-    MOVF    PORTA, W
-    MOVWF   PORTA_ACTUAL
+    MOVF    PORTE, W
+    MOVWF   PORTE_ACTUAL
     ;SE COMPRUEBA DE QUE SE HAYA SOLTADO EL BOTON
-    BTFSS   PORTA_ANTERIOR, RA4
+    BTFSS   PORTE_ANTERIOR, RE0
     GOTO    SA    
    ; ------------- SI SE 1 SE EJECUTA ESTO------------------
-    BTFSC   PORTA_ACTUAL,RA4
+    BTFSC   PORTE_ACTUAL,RE0
     GOTO    SA
     ;---------- SI SE ANTERIOR ES 0 ----------------------------
     BCF	STATUS,C 
@@ -623,11 +632,16 @@ LOOP:
     MOVWF   OPCION
     
     SA
-    BTFSS   PORTA_ANTERIOR, 5
+    BTFSS   PORTE_ANTERIOR, RE1
     GOTO SB
-    BTFSS   PORTA_ACTUAL, 5
+    BTFSS   PORTE_ACTUAL, RE1
     BSF	FLAGS,0 ;SE GUARDA EL VALOR EN LA EEPROM
     SB
+    BTFSS   PORTE_ANTERIOR, RE2
+    GOTO    SC
+    BTFSS   PORTE_ACTUAL, RE2
+    BSF	FLAGS,1
+    SC
     ;BCF	PIE1, ADIE
     BTFSC   OPCION, 0
     GOTO    ANALOGICO
@@ -694,7 +708,7 @@ LOOP:
     SECUENCIADO
     CLRF    PORTB
     BSF	PORTB, RB5
-    
+
     BSF	T1CON, TMR1ON ;SE ENCIENDE
    
     
@@ -758,7 +772,8 @@ LOOP:
    
    BTFSS    FLAGS, 1 ;SI SE TIENE QUE REINICIAR
    GOTO	SEGUIR_CON_GUARDAR
-   CLRF	DIR_EEPROM
+   MOVLW  .255
+   MOVWF	DIR_EEPROM
    BCF	FLAGS,1
    
    SEGUIR_CON_GUARDAR
